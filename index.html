@@ -70,11 +70,133 @@ a { color: var(--accent); }
 .big { font-family: var(--font-display); font-size: 24px; margin: 4px 0 6px; }
 .btn { display: inline-block; margin-top: 10px; padding: 8px 14px; border-radius: 8px; background: var(--accent); color: var(--bg); font-weight: 600; text-decoration: none; }
 .empty { border-style: dashed; }
-.balls { display: flex; flex-wrap: wrap; gap: 6px; }
-.ball { font-family: var(--font-mono); font-size: 13px; width: 32px; height: 32px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); }
-.ball.bonus { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-
 ol.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+
+
+.lx-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: clamp(1rem, 2vw, 1.6rem); align-items: start; }
+.lx-game { grid-template-columns: minmax(0, 1fr); container-type: inline-size; }
+.lx-game > * { min-width: 0; }
+.lx-cols .lx-game .lx-ball { --s: clamp(2rem, 11cqw, 4rem); }
+.lx-cols .lx-game .lx-balls { gap: clamp(.25rem, 1.6cqw, .8rem); margin: 1.1rem 0 .7rem; }
+.lx-cols .lx-game .lx-hero { padding: clamp(.8rem, 4cqw, 1.7rem); }
+.lx-cols .lx-game .lx-when { font-size: clamp(1.1rem, 6.2cqw, 2rem); }
+.lx-cols .lx-game .lx-count-num { font-size: clamp(1.2rem, 6cqw, 2rem); }
+.lx-cols .lx-game .lx-block h3 { font-size: clamp(1.1rem, 4.5cqw, 1.4rem); }
+.lx-cols .lx-game .lx-card-h .lx-ball { --s: clamp(2.2rem, 9cqw, 2.9rem); }
+.lx-cols .lx-game .lx-chips li { font-size: clamp(.68rem, 2.9cqw, .8rem); padding: .25rem .6rem; }
+.lx-cols .lx-game .lx-table { font-size: clamp(.68rem, 2.9cqw, .8rem); }
+.lx-cols .lx-game .lx-table th, .lx-cols .lx-game .lx-table td { padding: .4rem clamp(.25rem, 1.5cqw, .6rem); }
+.lx-cols .lx-game .lx-heat { grid-template-columns: repeat(auto-fill, minmax(clamp(1.7rem, 7cqw, 2.35rem), 1fr)); }
+.lx-cols .lx-gl-big { font-size: clamp(1.4rem, 3vw, 2rem); }
+.lx-cols .lx-gl-big.sm { font-size: clamp(1rem, 2vw, 1.3rem); }
+.lx-cols .lx-gl-main { grid-template-columns: 1.4fr 1fr .6fr; gap: .5rem; }
+.lx-cols .lx-gl-prizes { grid-template-columns: 1fr; }
+.lx-cols .lx-why { grid-template-columns: 1fr; }
+.lx-cols .lx-two { grid-template-columns: 1fr; gap: 1.4rem; }
+.lx-cols > .lx-game { min-width: 0; }
+.lx-glance { border: 1px solid var(--line); border-radius: calc(10px * 1.4); padding: 1.1rem 1.2rem; background: radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--lx-acc) 18%, transparent) 0, transparent 60%), var(--panel); display: grid; gap: .8rem; }
+.lx-gl-main { display: grid; grid-template-columns: 1.5fr 1fr .6fr; gap: .8rem; align-items: end; }
+.lx-gl-lbl { display: block; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: .15rem; }
+.lx-gl-big { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.05; color: var(--lx-acc); }
+.lx-gl-big.sm { font-size: clamp(1.1rem, 2.4vw, 1.5rem); color: var(--fg); }
+.lx-gl-prizes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .3rem .9rem; font-size: .8rem; }
+.lx-gl-prizes li { display: flex; justify-content: space-between; gap: .6rem; border-top: 1px solid var(--line); padding-top: .3rem; font-variant-numeric: tabular-nums; }
+.lx-gl-prizes span { color: var(--muted); }
+.lx-gl-odds, .lx-gl-note { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+.lx-gl-odds b, .lx-gl-note b { color: var(--fg); font-weight: 600; }
+.lx-gl-note { margin: -1rem 0 0; max-width: 56rem; }
+@media (max-width: 30rem) { .lx-gl-main { grid-template-columns: 1fr 1fr; } .lx-gl-prizes { grid-template-columns: 1fr; } }
+
+.lx-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: .6rem; margin-bottom: 1rem; }
+.lx-facts-grid div { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: .7rem .8rem; display: grid; gap: .15rem; }
+.lx-facts-grid span { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.lx-facts-grid b { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; }
+.lx-howto, .lx-tips { margin: 0 0 1rem; padding-left: 1.1rem; display: grid; gap: .4rem; font-size: .94rem; line-height: 1.5; }
+.lx-tips { margin: 1.1rem 0 0; color: var(--muted); font-size: .8rem; }
+.lx-tips b { color: var(--fg); font-weight: 600; }
+.lx-prizes td, .lx-prizes th { white-space: normal; }
+.lx-prizes td:nth-child(n+2), .lx-prizes th:nth-child(n+2) { text-align: left; }
+
+
+.lx { max-width: 62rem; margin-inline: auto; font-family: var(--font-body); color: var(--fg); display: grid; gap: 2.2rem; }
+.lx h1, .lx h2, .lx h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+.lx p { margin: 0; }
+.lx-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: .8rem 1.5rem; }
+.lx-top h1 { font-family: var(--font-display); font-size: clamp(1.9rem, 5vw, 2.7rem); letter-spacing: -.01em; }
+.lx-sub { color: var(--muted); font-size: .94rem; margin-top: .35rem; max-width: 44rem; line-height: 1.45; }
+.lx-nav { display: flex; gap: .5rem; flex-wrap: wrap; }
+.lx-nav button { font: inherit; font-size: .8rem; color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: .45rem .95rem; cursor: pointer; }
+.lx-nav button:hover { border-color: var(--muted); }
+.lx-nav button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.lx-powerball { --lx-acc: #d93a33; --lx-acc-ink: #fff; }
+.lx-megamillions { --lx-acc: #e8a50c; --lx-acc-ink: #1b1400; }
+.lx-game { display: grid; gap: 1.6rem; scroll-margin-top: 1rem; }
+.lx-hero { position: relative; overflow: hidden; border-radius: calc(10px * 1.6); border: 1px solid var(--line); padding: clamp(1.1rem, 3vw, 1.9rem); background:
+  radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--lx-acc) 22%, transparent) 0, transparent 55%),
+  var(--panel); }
+.lx-hero-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.lx-eyebrow { font-size: .8rem; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+.lx-when { font-family: var(--font-display); font-size: clamp(1.4rem, 4vw, 2rem); margin-top: .25rem; }
+.lx-time { color: var(--muted); font-size: .62em; font-family: var(--font-body); white-space: nowrap; }
+.lx-count { display: grid; text-align: right; }
+.lx-count-num { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.1rem); font-variant-numeric: tabular-nums; color: var(--lx-acc); filter: saturate(1.1); }
+.lx-count-lbl { font-size: .8rem; color: var(--muted); }
+.lx-balls { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(.5rem, 2vw, .9rem); margin: 1.5rem 0 .9rem; }
+.lx-plus { color: var(--muted); font-size: 1.4rem; }
+.lx-ball { --s: clamp(3rem, 11vw, 4.4rem); width: var(--s); height: var(--s); border-radius: 50%; display: inline-grid; place-items: center; font-family: var(--font-display); font-size: calc(var(--s) * .42); font-variant-numeric: tabular-nums; color: #15171c;
+  background: radial-gradient(circle at 32% 26%, #fff 0, #f2f3f5 42%, #c9ced6 100%); box-shadow: inset -5px -7px 12px rgba(0,0,0,.16), 0 8px 18px rgba(0,0,0,.22); }
+.lx-ball.bonus { color: var(--lx-acc-ink); background: radial-gradient(circle at 32% 26%, color-mix(in srgb, var(--lx-acc) 55%, #fff) 0, var(--lx-acc) 52%, color-mix(in srgb, var(--lx-acc) 68%, #000) 100%); }
+.lx-in .lx-ball { animation: lx-drop .5s ease-out both; animation-delay: calc(var(--i) * 90ms); }
+@keyframes lx-drop { from { transform: translateY(-1.4rem) scale(.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .lx-in .lx-ball { animation: none; } }
+.lx-balls-cap { color: var(--muted); font-size: .8rem; }
+.lx-chips { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1rem 0 0; }
+.lx-chips li { font-size: .8rem; border: 1px solid var(--line); border-radius: 999px; padding: .3rem .75rem; background: color-mix(in srgb, var(--panel) 70%, transparent); font-variant-numeric: tabular-nums; }
+.lx-dim { color: var(--muted); }
+.lx-block h3 { font-family: var(--font-display); font-size: 1.35rem; }
+.lx-note { color: var(--muted); font-size: .8rem; margin: .3rem 0 .9rem; line-height: 1.5; max-width: 46rem; }
+.lx-why { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: .9rem; }
+.lx-card { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 1rem; display: grid; gap: .7rem; align-content: start; min-width: 0; }
+.lx-card-h { display: flex; gap: .8rem; align-items: center; }
+.lx-card-h .lx-ball { --s: 2.9rem; box-shadow: inset -3px -4px 8px rgba(0,0,0,.16), 0 4px 10px rgba(0,0,0,.2); }
+.lx-reason { font-size: .94rem; line-height: 1.35; }
+.lx-reason small { display: block; color: var(--muted); font-size: .8rem; margin-top: .1rem; }
+.lx-strip { display: grid; grid-template-columns: repeat(25, 1fr); gap: 2px; }
+.lx-strip i { aspect-ratio: 1; border-radius: 3px; background: color-mix(in srgb, var(--fg) 9%, transparent); }
+.lx-strip i.on { background: var(--lx-acc); }
+.lx-stripcap { display: flex; justify-content: space-between; color: var(--muted); font-size: .68rem; margin-top: -.35rem; }
+.lx-facts { margin: 0; padding: 0; list-style: none; display: grid; gap: .25rem; font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lx-facts b { color: var(--fg); font-weight: 600; }
+.lx-meters { display: grid; gap: .3rem; }
+.lx-meter { display: grid; grid-template-columns: 5.2rem 1fr; align-items: center; gap: .5rem; font-size: .7rem; color: var(--muted); }
+.lx-meter div { position: relative; height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--fg) 10%, transparent); }
+.lx-meter div::before { content: ""; position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--line); }
+.lx-meter div span { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: var(--lx-acc); }
+.lx-heat-wrap { position: relative; }
+.lx-heat { display: grid; grid-template-columns: repeat(auto-fill, minmax(2.35rem, 1fr)); gap: 4px; }
+.lx-cell { aspect-ratio: 1; display: grid; place-items: center; border-radius: 7px; font-size: .78rem; font-variant-numeric: tabular-nums; border: 1px solid transparent; cursor: default; background: color-mix(in srgb, var(--lx-acc) calc(var(--h) * 78%), color-mix(in srgb, var(--fg) 6%, transparent)); }
+.lx-cell.pick { outline: 2px solid var(--fg); outline-offset: 1px; font-weight: 700; }
+.lx-cell.fus { border-color: var(--muted); border-style: dashed; }
+.lx-legend { display: flex; align-items: center; gap: .6rem; margin-top: .7rem; font-size: .7rem; color: var(--muted); }
+.lx-legend i { width: 7rem; height: 8px; border-radius: 4px; background: linear-gradient(90deg, color-mix(in srgb, var(--fg) 6%, transparent), var(--lx-acc)); }
+.lx-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.25); padding: .4rem .4rem; font-size: .8rem; max-width: 15rem; line-height: 1.4; }
+.lx-tip b { font-weight: 600; }
+.lx-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 2rem; }
+.lx-strats { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
+.lx-strats li { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .2rem .8rem; border-bottom: 1px solid var(--line); padding-bottom: .4rem; font-size: .8rem; }
+.lx-strats .nm { color: var(--muted); }
+.lx-strats .nums { font-variant-numeric: tabular-nums; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .02em; }
+.lx-fus { font-size: .8rem; line-height: 1.55; margin-top: .6rem; color: var(--muted); }
+.lx-fus b { color: var(--fg); font-weight: 600; }
+.lx-tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.lx-table { border-collapse: collapse; width: 100%; font-size: .8rem; font-variant-numeric: tabular-nums; }
+.lx-table th, .lx-table td { padding: .5rem .7rem; text-align: center; white-space: nowrap; }
+.lx-table th:first-child, .lx-table td:first-child { text-align: left; }
+.lx-table th { color: var(--muted); font-weight: 500; border-bottom: 1px solid var(--line); }
+.lx-table tbody tr + tr td { border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.lx-table td.hit { background: color-mix(in srgb, var(--lx-acc) 30%, transparent); font-weight: 700; border-radius: 6px; }
+.lx-foot { color: var(--muted); font-size: .8rem; line-height: 1.55; border-top: 1px solid var(--line); padding-top: 1rem; max-width: 52rem; }
+
 </style>
 
 <div class="wrap">
@@ -151,14 +273,257 @@ ol.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
   </section>
 
   <section id="lottery" role="tabpanel" aria-labelledby="t-lottery" hidden>
-    <p class="noise" style="margin-bottom:14px">From your goldie-lottery repo. Picks were logged Oct 16, 10:53 PM before each draw. Lottery draws are random, so treat these as a for-fun experiment.</p>
-    <div class="grid" id="lotto-games"></div>
-    <div class="grid" style="margin-top:20px" id="lotto-extra"></div>
+<div class="lx" id="lx-root">
+  <header class="lx-top">
+    <div>
+      <h1>Lotto Daily</h1>
+      <p class="lx-sub" id="lx-takeaway">Loading the next draws…</p>
+    </div>
+    <nav class="lx-nav" aria-label="Jump to a game"><button data-go="powerball" type="button">Powerball</button><button data-go="megamillions" type="button">Mega Millions</button></nav>
+  </header>
+  <div class="lx-cols lx-glances">
+<article class="lx-glance lx-powerball">
+  <p class="lx-eyebrow">Powerball</p>
+  <div class="lx-gl-main">
+    <div><span class="lx-gl-lbl">Jackpot</span><b class="lx-gl-big" data-source="gameinfo" data-where="game=powerball" data-field="jackpot">—</b></div>
+    <div><span class="lx-gl-lbl">Cash option</span><b class="lx-gl-big sm" data-source="gameinfo" data-where="game=powerball" data-field="cash_value">—</b></div>
+    <div><span class="lx-gl-lbl">Ticket</span><b class="lx-gl-big sm" data-source="gameinfo" data-where="game=powerball" data-field="price">—</b></div>
+  </div>
+  <ul class="lx-gl-prizes">
+    <li><span data-source="prizes" data-where="game=powerball&amp;tier=2" data-field="match">—</span><b data-source="prizes" data-where="game=powerball&amp;tier=2" data-field="base_prize">—</b></li>
+    <li><span data-source="prizes" data-where="game=powerball&amp;tier=3" data-field="match">—</span><b data-source="prizes" data-where="game=powerball&amp;tier=3" data-field="base_prize">—</b></li>
+    <li><span data-source="prizes" data-where="game=powerball&amp;tier=6" data-field="match">—</span><b data-source="prizes" data-where="game=powerball&amp;tier=6" data-field="base_prize">—</b></li>
+    <li><span data-source="prizes" data-where="game=powerball&amp;tier=9" data-field="match">—</span><b data-source="prizes" data-where="game=powerball&amp;tier=9" data-field="base_prize">—</b></li>
+  </ul>
+  <p class="lx-gl-odds">Any prize: <b data-source="gameinfo" data-where="game=powerball" data-field="any_prize_odds">—</b> per ticket</p>
+</article>
+<article class="lx-glance lx-megamillions">
+  <p class="lx-eyebrow">Mega Millions</p>
+  <div class="lx-gl-main">
+    <div><span class="lx-gl-lbl">Jackpot</span><b class="lx-gl-big" data-source="gameinfo" data-where="game=megamillions" data-field="jackpot">—</b></div>
+    <div><span class="lx-gl-lbl">Cash option</span><b class="lx-gl-big sm" data-source="gameinfo" data-where="game=megamillions" data-field="cash_value">—</b></div>
+    <div><span class="lx-gl-lbl">Ticket</span><b class="lx-gl-big sm" data-source="gameinfo" data-where="game=megamillions" data-field="price">—</b></div>
+  </div>
+  <ul class="lx-gl-prizes">
+    <li><span data-source="prizes" data-where="game=megamillions&amp;tier=2" data-field="match">—</span><b data-source="prizes" data-where="game=megamillions&amp;tier=2" data-field="base_prize">—</b></li>
+    <li><span data-source="prizes" data-where="game=megamillions&amp;tier=3" data-field="match">—</span><b data-source="prizes" data-where="game=megamillions&amp;tier=3" data-field="base_prize">—</b></li>
+    <li><span data-source="prizes" data-where="game=megamillions&amp;tier=6" data-field="match">—</span><b data-source="prizes" data-where="game=megamillions&amp;tier=6" data-field="base_prize">—</b></li>
+    <li><span data-source="prizes" data-where="game=megamillions&amp;tier=9" data-field="match">—</span><b data-source="prizes" data-where="game=megamillions&amp;tier=9" data-field="base_prize">—</b></li>
+  </ul>
+  <p class="lx-gl-odds">Any prize: <b data-source="gameinfo" data-where="game=megamillions" data-field="any_prize_odds">—</b> per ticket</p>
+</article></div>
+  <p class="lx-note lx-gl-note"><b>Jackpot</b> is the advertised top prize, paid out as yearly instalments over 29 years. The <b>cash option</b> is a smaller lump sum paid up front instead, and it is what most winners take. If more than one ticket matches everything, the jackpot is split between them. Taxes come out of both.</p>
+  <div class="lx-cols">
+  
+<section class="lx-game lx-powerball" id="powerball" data-game="powerball">
+  <div class="lx-hero">
+    <div class="lx-hero-top">
+      <div>
+        <p class="lx-eyebrow">Powerball · next draw</p>
+        <h2 class="lx-when"><span class="lx-date">—</span> <span class="lx-time">—</span></h2>
+      </div>
+      <div class="lx-count" aria-live="off"><span class="lx-count-num">—</span><span class="lx-count-lbl">until the draw</span></div>
+    </div>
+    <div class="lx-balls" aria-label="Predicted numbers">
+      <span class="lx-ball" style="--i:0" data-source="games" data-where="game=powerball" data-field="p1">—</span>
+      <span class="lx-ball" style="--i:1" data-source="games" data-where="game=powerball" data-field="p2">—</span>
+      <span class="lx-ball" style="--i:2" data-source="games" data-where="game=powerball" data-field="p3">—</span>
+      <span class="lx-ball" style="--i:3" data-source="games" data-where="game=powerball" data-field="p4">—</span>
+      <span class="lx-ball" style="--i:4" data-source="games" data-where="game=powerball" data-field="p5">—</span>
+      <span class="lx-plus">+</span>
+      <span class="lx-ball bonus" style="--i:5" data-source="games" data-where="game=powerball" data-field="bonus" title="Powerball">—</span>
+    </div>
+    <p class="lx-balls-cap">Five white numbers and one Powerball. Built from the last <b data-source="games" data-where="game=powerball" data-field="window_draws">—</b> draws.</p>
+    <ul class="lx-chips">
+      <li>Sum <b data-source="games" data-where="game=powerball" data-field="total">—</b> <span class="lx-dim">(typical <b data-source="games" data-where="game=powerball" data-field="band_lo">—</b>–<b data-source="games" data-where="game=powerball" data-field="band_hi">—</b>)</span></li>
+      <li><b data-source="games" data-where="game=powerball" data-field="odd">—</b> odd, <span class="lx-even">—</span> even</li>
+      <li><b data-source="games" data-where="game=powerball" data-field="low">—</b> low, <span class="lx-high">—</span> high</li>
+      <li><b data-source="games" data-where="game=powerball" data-field="consec">—</b> back-to-back pair<span class="lx-s">s</span></li>
+    </ul>
+  </div>
+
+  <div class="lx-block">
+    <h3>Why these numbers</h3>
+    <p class="lx-note">Each card shows how a number behaved in the last 50 draws (two rows of 25; the top row is older, the bottom row the latest). A filled square means it was drawn. Bars show how it scores on the three signals the formula blends.</p>
+    <div class="lx-why" id="powerball-why"></div>
+  </div>
+
+  <div class="lx-block">
+    <h3>Every number at a glance</h3>
+    <p class="lx-note">Brighter means drawn more often in the last 50 draws than chance expects. Rings mark the picks above.</p>
+    <div class="lx-heat-wrap">
+      <div class="lx-heat" id="powerball-heat" data-source="numbers"></div>
+      <div class="lx-tip" id="powerball-tip" hidden></div>
+    </div>
+    <div class="lx-legend"><span>drawn less</span><i></i><span>drawn more</span></div>
+  </div>
+
+  <div class="lx-block lx-two">
+    <div>
+      <h3>Other ways the code picked</h3>
+      <p class="lx-note">Same data, different ideas. They are equally likely to win.</p>
+      <ul class="lx-strats" id="powerball-strats"></ul>
+    </div>
+    <div>
+      <h3>Reality check</h3>
+      <p class="lx-note">One ticket has a 1 in <span class="lx-odds">—</span> chance at the jackpot. In backtests over thousands of past draws no method beat random picks, including the fusion engine below.</p>
+      <p class="lx-fus">Fusion engine skill score <b data-source="games" data-where="game=powerball" data-field="fusion_z">—</b>. Anything under 3.5 is noise. <b data-source="games" data-where="game=powerball" data-field="fusion_trusted">—</b> of 42 pattern detectors currently have a track record worth trusting.</p>
+    </div>
+  </div>
+
+  <div class="lx-block lx-play">
+    <h3>How to play and what you win</h3>
+    <p class="lx-note">From the NC Education Lottery (nclottery.com). Jackpot as of <b data-source="gameinfo" data-where="game=powerball" data-field="jackpot_asof">—</b>.</p>
+    <div class="lx-facts-grid">
+      <div><span>Ticket</span><b data-source="gameinfo" data-where="game=powerball" data-field="price">—</b></div>
+      <div><span>Jackpot</span><b data-source="gameinfo" data-where="game=powerball" data-field="jackpot">—</b></div>
+      <div><span>Cash option</span><b data-source="gameinfo" data-where="game=powerball" data-field="cash_value">—</b></div>
+      <div><span>Any prize</span><b data-source="gameinfo" data-where="game=powerball" data-field="any_prize_odds">—</b></div>
+    </div>
+    <ul class="lx-howto">
+      <li><b>Pick:</b> <span data-source="gameinfo" data-where="game=powerball" data-field="pick">—</span>.</li>
+      <li><b>Draws:</b> <span data-source="gameinfo" data-where="game=powerball" data-field="draw_days">—</span>. Sales stop at <span data-source="gameinfo" data-where="game=powerball" data-field="retail_cutoff">—</span> in stores and <span data-source="gameinfo" data-where="game=powerball" data-field="online_cutoff">—</span> online.</li>
+      <li><b>Extras:</b> <span data-source="gameinfo" data-where="game=powerball" data-field="addons">—</span></li>
+      <li><b>Repeat:</b> <span data-source="gameinfo" data-where="game=powerball" data-field="multidraw">—</span> in a row (multi-draw).</li>
+      <li><b>Claim:</b> within <span data-source="gameinfo" data-where="game=powerball" data-field="claim_days">—</span> days of the draw. You must be <span data-source="gameinfo" data-where="game=powerball" data-field="min_age">—</span> or older.</li>
+    </ul>
+    <div class="lx-tablewrap">
+      <table class="lx-table lx-prizes" id="powerball-prizes" data-source="prizes" data-row-key="game,tier">
+        <thead><tr><th data-field="match">Match</th><th data-field="base_prize">Prize</th><th data-field="boosted_prize">With the multiplier</th><th data-field="odds">Odds</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <ul class="lx-tips">
+      <li><b>Quick Pick and your own numbers have identical odds.</b> The machine's random numbers are no better or worse than these picks.</li>
+      <li><b>Avoid birthdays and neat patterns.</b> Many people play them, so if you do win the jackpot you would split it with more people. Numbers above 31 are less crowded.</li>
+      <li><b>The jackpot is the least likely prize.</b> Smaller prizes land about 1 in 23 to 25 tickets, and the multiplier only boosts those smaller prizes, never the jackpot.</li>
+      <li><b>Cash or annuity:</b> the cash option is the smaller lump sum shown above. The annuity is paid over 29 years. Federal and state taxes apply to both.</li>
+      <li><b>Sign the back of the ticket right away.</b> The ticket is your proof, not the play slip. Tickets can't be cancelled once printed.</li>
+      <li><b>Set a budget before you play.</b> On average a ticket returns less than it costs. If it stops being fun, call 1-800-522-4700.</li>
+    </ul>
+  </div>
+
+  <div class="lx-block">
+    <h3>Latest results, checked against today's picks</h3>
+    <p class="lx-note">Numbers that match the picks above are highlighted.</p>
+    <div class="lx-tablewrap">
+      <table class="lx-table" id="powerball-recent" data-source="draws" data-row-key="date">
+        <thead><tr><th data-field="date">Date</th><th data-field="n1">1</th><th data-field="n2">2</th><th data-field="n3">3</th><th data-field="n4">4</th><th data-field="n5">5</th><th data-field="bonus">Powerball</th><th data-field="overlap">Matches</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+  
+<section class="lx-game lx-megamillions" id="megamillions" data-game="megamillions">
+  <div class="lx-hero">
+    <div class="lx-hero-top">
+      <div>
+        <p class="lx-eyebrow">Mega Millions · next draw</p>
+        <h2 class="lx-when"><span class="lx-date">—</span> <span class="lx-time">—</span></h2>
+      </div>
+      <div class="lx-count" aria-live="off"><span class="lx-count-num">—</span><span class="lx-count-lbl">until the draw</span></div>
+    </div>
+    <div class="lx-balls" aria-label="Predicted numbers">
+      <span class="lx-ball" style="--i:0" data-source="games" data-where="game=megamillions" data-field="p1">—</span>
+      <span class="lx-ball" style="--i:1" data-source="games" data-where="game=megamillions" data-field="p2">—</span>
+      <span class="lx-ball" style="--i:2" data-source="games" data-where="game=megamillions" data-field="p3">—</span>
+      <span class="lx-ball" style="--i:3" data-source="games" data-where="game=megamillions" data-field="p4">—</span>
+      <span class="lx-ball" style="--i:4" data-source="games" data-where="game=megamillions" data-field="p5">—</span>
+      <span class="lx-plus">+</span>
+      <span class="lx-ball bonus" style="--i:5" data-source="games" data-where="game=megamillions" data-field="bonus" title="Mega Ball">—</span>
+    </div>
+    <p class="lx-balls-cap">Five white numbers and one Mega Ball. Built from the last <b data-source="games" data-where="game=megamillions" data-field="window_draws">—</b> draws.</p>
+    <ul class="lx-chips">
+      <li>Sum <b data-source="games" data-where="game=megamillions" data-field="total">—</b> <span class="lx-dim">(typical <b data-source="games" data-where="game=megamillions" data-field="band_lo">—</b>–<b data-source="games" data-where="game=megamillions" data-field="band_hi">—</b>)</span></li>
+      <li><b data-source="games" data-where="game=megamillions" data-field="odd">—</b> odd, <span class="lx-even">—</span> even</li>
+      <li><b data-source="games" data-where="game=megamillions" data-field="low">—</b> low, <span class="lx-high">—</span> high</li>
+      <li><b data-source="games" data-where="game=megamillions" data-field="consec">—</b> back-to-back pair<span class="lx-s">s</span></li>
+    </ul>
+  </div>
+
+  <div class="lx-block">
+    <h3>Why these numbers</h3>
+    <p class="lx-note">Each card shows how a number behaved in the last 50 draws (two rows of 25; the top row is older, the bottom row the latest). A filled square means it was drawn. Bars show how it scores on the three signals the formula blends.</p>
+    <div class="lx-why" id="megamillions-why"></div>
+  </div>
+
+  <div class="lx-block">
+    <h3>Every number at a glance</h3>
+    <p class="lx-note">Brighter means drawn more often in the last 50 draws than chance expects. Rings mark the picks above.</p>
+    <div class="lx-heat-wrap">
+      <div class="lx-heat" id="megamillions-heat" data-source="numbers"></div>
+      <div class="lx-tip" id="megamillions-tip" hidden></div>
+    </div>
+    <div class="lx-legend"><span>drawn less</span><i></i><span>drawn more</span></div>
+  </div>
+
+  <div class="lx-block lx-two">
+    <div>
+      <h3>Other ways the code picked</h3>
+      <p class="lx-note">Same data, different ideas. They are equally likely to win.</p>
+      <ul class="lx-strats" id="megamillions-strats"></ul>
+    </div>
+    <div>
+      <h3>Reality check</h3>
+      <p class="lx-note">One ticket has a 1 in <span class="lx-odds">—</span> chance at the jackpot. In backtests over thousands of past draws no method beat random picks, including the fusion engine below.</p>
+      <p class="lx-fus">Fusion engine skill score <b data-source="games" data-where="game=megamillions" data-field="fusion_z">—</b>. Anything under 3.5 is noise. <b data-source="games" data-where="game=megamillions" data-field="fusion_trusted">—</b> of 42 pattern detectors currently have a track record worth trusting.</p>
+    </div>
+  </div>
+
+  <div class="lx-block lx-play">
+    <h3>How to play and what you win</h3>
+    <p class="lx-note">From the NC Education Lottery (nclottery.com). Jackpot as of <b data-source="gameinfo" data-where="game=megamillions" data-field="jackpot_asof">—</b>.</p>
+    <div class="lx-facts-grid">
+      <div><span>Ticket</span><b data-source="gameinfo" data-where="game=megamillions" data-field="price">—</b></div>
+      <div><span>Jackpot</span><b data-source="gameinfo" data-where="game=megamillions" data-field="jackpot">—</b></div>
+      <div><span>Cash option</span><b data-source="gameinfo" data-where="game=megamillions" data-field="cash_value">—</b></div>
+      <div><span>Any prize</span><b data-source="gameinfo" data-where="game=megamillions" data-field="any_prize_odds">—</b></div>
+    </div>
+    <ul class="lx-howto">
+      <li><b>Pick:</b> <span data-source="gameinfo" data-where="game=megamillions" data-field="pick">—</span>.</li>
+      <li><b>Draws:</b> <span data-source="gameinfo" data-where="game=megamillions" data-field="draw_days">—</span>. Sales stop at <span data-source="gameinfo" data-where="game=megamillions" data-field="retail_cutoff">—</span> in stores and <span data-source="gameinfo" data-where="game=megamillions" data-field="online_cutoff">—</span> online.</li>
+      <li><b>Extras:</b> <span data-source="gameinfo" data-where="game=megamillions" data-field="addons">—</span></li>
+      <li><b>Repeat:</b> <span data-source="gameinfo" data-where="game=megamillions" data-field="multidraw">—</span> in a row (multi-draw).</li>
+      <li><b>Claim:</b> within <span data-source="gameinfo" data-where="game=megamillions" data-field="claim_days">—</span> days of the draw. You must be <span data-source="gameinfo" data-where="game=megamillions" data-field="min_age">—</span> or older.</li>
+    </ul>
+    <div class="lx-tablewrap">
+      <table class="lx-table lx-prizes" id="megamillions-prizes" data-source="prizes" data-row-key="game,tier">
+        <thead><tr><th data-field="match">Match</th><th data-field="base_prize">Prize</th><th data-field="boosted_prize">With the multiplier</th><th data-field="odds">Odds</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <ul class="lx-tips">
+      <li><b>Quick Pick and your own numbers have identical odds.</b> The machine's random numbers are no better or worse than these picks.</li>
+      <li><b>Avoid birthdays and neat patterns.</b> Many people play them, so if you do win the jackpot you would split it with more people. Numbers above 31 are less crowded.</li>
+      <li><b>The jackpot is the least likely prize.</b> Smaller prizes land about 1 in 23 to 25 tickets, and the multiplier only boosts those smaller prizes, never the jackpot.</li>
+      <li><b>Cash or annuity:</b> the cash option is the smaller lump sum shown above. The annuity is paid over 29 years. Federal and state taxes apply to both.</li>
+      <li><b>Sign the back of the ticket right away.</b> The ticket is your proof, not the play slip. Tickets can't be cancelled once printed.</li>
+      <li><b>Set a budget before you play.</b> On average a ticket returns less than it costs. If it stops being fun, call 1-800-522-4700.</li>
+    </ul>
+  </div>
+
+  <div class="lx-block">
+    <h3>Latest results, checked against today's picks</h3>
+    <p class="lx-note">Numbers that match the picks above are highlighted.</p>
+    <div class="lx-tablewrap">
+      <table class="lx-table" id="megamillions-recent" data-source="draws" data-row-key="date">
+        <thead><tr><th data-field="date">Date</th><th data-field="n1">1</th><th data-field="n2">2</th><th data-field="n3">3</th><th data-field="n4">4</th><th data-field="n5">5</th><th data-field="bonus">Mega Ball</th><th data-field="overlap">Matches</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+  </div>
+  <p class="lx-foot">Just for fun. The numbers come from three signals blended together: how often a number has come up, how long it has been missing, and how hot it has been lately, using the last 50 draws. Real lottery draws are random, so every combination has exactly the same chance, and none of these methods has ever beaten random picks in testing, including 20, 30 and 50-draw windows. Never spend money you would miss.</p>
+</div>
+
     <div class="panel" style="margin-top:20px">
       <p class="label">Your reminder and inbox</p>
       <div class="item"><b>NC Education Lottery: online play purchase confirmed</b><span>Order processed early Oct 17. Sign in to your NC Lottery account to see the numbers you picked.</span></div>
       <div class="item"><b>PayPal receipt, NCEL <span class="num">$10.00</span></b><span>Oct 16.</span></div>
     </div>
+    <p class="noise" style="margin-top:14px">Data snapshot from your goldie-lottery repo and the NC Education Lottery as of Oct 17, 2026. Prize amounts and the jackpot can change before the draw.</p>
   </section>
 
   <section id="stocks" role="tabpanel" aria-labelledby="t-stocks" hidden>
@@ -186,41 +551,164 @@ ol.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
 </div>
 
 <script>
-var DATA = {"generated":"2026-10-16 10:53 PM","games":[{"game":"powerball","label":"Powerball","bonus_name":"Powerball","draw_date":"2026-10-17","draw_time":"10:59 PM ET","odds":292201338,"picks":[["Formula (frequency + due + hot)",[3,14,58,64,65],14],["Balanced profile",[3,18,28,58,65],14],["Overdue gaps",[8,27,43,48,60],21],["Hot streak (fast decay)",[4,21,33,42,51],9],["Pair affinity",[3,28,36,57,58],2]],"hot":[[42,4],[4,3],[14,3],[15,3],[17,3],[19,3]],"due":[[43,42],[48,31],[60,30],[35,29],[66,27],[27,26]],"window":50,"draw_ts":"2026-10-17T22:59:00-04:00"},{"game":"megamillions","label":"Mega Millions","bonus_name":"Mega Ball","draw_date":"2026-10-20","draw_time":"11:00 PM ET","odds":290472336,"picks":[["Formula (frequency + due + hot)",[26,30,34,51,59],12],["Balanced profile",[11,30,34,43,59],12],["Overdue gaps",[18,28,31,52,69],18],["Hot streak (fast decay)",[7,15,26,40,68],17],["Pair affinity",[5,30,34,49,59],12]],"hot":[[30,4],[57,4],[68,4],[1,3],[7,3],[17,3]],"due":[[28,50],[69,50],[52,31],[31,28],[35,28],[39,27]],"window":50,"draw_ts":"2026-10-20T23:00:00-04:00"}],"draws":[{"game":"powerball","date":"2026-10-14","n1":3,"n2":34,"n3":37,"n4":42,"n5":46,"bonus":20,"overlap":0},{"game":"powerball","date":"2026-10-12","n1":22,"n2":28,"n3":38,"n4":51,"n5":69,"bonus":9,"overlap":0},{"game":"powerball","date":"2026-10-10","n1":1,"n2":4,"n3":19,"n4":33,"n5":51,"bonus":15,"overlap":1},{"game":"powerball","date":"2026-10-07","n1":11,"n2":13,"n3":14,"n4":21,"n5":65,"bonus":19,"overlap":1},{"game":"powerball","date":"2026-10-05","n1":16,"n2":23,"n3":32,"n4":36,"n5":54,"bonus":9,"overlap":0},{"game":"powerball","date":"2026-10-03","n1":4,"n2":42,"n3":44,"n4":55,"n5":59,"bonus":14,"overlap":2},{"game":"powerball","date":"2026-09-30","n1":4,"n2":6,"n3":23,"n4":33,"n5":44,"bonus":13,"overlap":1},{"game":"powerball","date":"2026-09-28","n1":17,"n2":21,"n3":29,"n4":42,"n5":49,"bonus":7,"overlap":1},{"game":"powerball","date":"2026-09-26","n1":14,"n2":40,"n3":52,"n4":55,"n5":57,"bonus":24,"overlap":1},{"game":"powerball","date":"2026-09-23","n1":5,"n2":15,"n3":26,"n4":29,"n5":30,"bonus":14,"overlap":0},{"game":"powerball","date":"2026-09-21","n1":2,"n2":7,"n3":9,"n4":17,"n5":58,"bonus":20,"overlap":2},{"game":"powerball","date":"2026-09-19","n1":18,"n2":30,"n3":41,"n4":45,"n5":68,"bonus":10,"overlap":0},{"game":"powerball","date":"2026-09-16","n1":2,"n2":21,"n3":24,"n4":25,"n5":64,"bonus":7,"overlap":0},{"game":"powerball","date":"2026-09-14","n1":19,"n2":20,"n3":57,"n4":61,"n5":67,"bonus":22,"overlap":0},{"game":"megamillions","date":"2026-10-13","n1":11,"n2":12,"n3":15,"n4":40,"n5":66,"bonus":17,"overlap":0},{"game":"megamillions","date":"2026-10-09","n1":2,"n2":7,"n3":16,"n4":63,"n5":70,"bonus":8,"overlap":0},{"game":"megamillions","date":"2026-10-06","n1":26,"n2":32,"n3":42,"n4":51,"n5":54,"bonus":22,"overlap":2},{"game":"megamillions","date":"2026-10-02","n1":6,"n2":37,"n3":40,"n4":41,"n5":55,"bonus":10,"overlap":0},{"game":"megamillions","date":"2026-09-29","n1":10,"n2":15,"n3":16,"n4":27,"n5":64,"bonus":23,"overlap":0},{"game":"megamillions","date":"2026-09-25","n1":25,"n2":57,"n3":58,"n4":67,"n5":68,"bonus":16,"overlap":0},{"game":"megamillions","date":"2026-09-22","n1":7,"n2":13,"n3":26,"n4":37,"n5":68,"bonus":8,"overlap":1},{"game":"megamillions","date":"2026-09-18","n1":4,"n2":9,"n3":24,"n4":56,"n5":68,"bonus":1,"overlap":0},{"game":"megamillions","date":"2026-09-15","n1":27,"n2":36,"n3":43,"n4":57,"n5":58,"bonus":16,"overlap":0},{"game":"megamillions","date":"2026-09-11","n1":3,"n2":30,"n3":33,"n4":53,"n5":62,"bonus":22,"overlap":1},{"game":"megamillions","date":"2026-09-08","n1":17,"n2":30,"n3":43,"n4":58,"n5":66,"bonus":20,"overlap":2},{"game":"megamillions","date":"2026-09-04","n1":6,"n2":26,"n3":34,"n4":59,"n5":61,"bonus":24,"overlap":1},{"game":"megamillions","date":"2026-09-01","n1":1,"n2":22,"n3":51,"n4":61,"n5":63,"bonus":17,"overlap":1},{"game":"megamillions","date":"2026-08-28","n1":8,"n2":17,"n3":29,"n4":42,"n5":55,"bonus":2,"overlap":1}]};
-function el(t, c, txt){ var e=document.createElement(t); if(c) e.className=c; if(txt!=null) e.textContent=txt; return e; }
-function pad(n){ return String(n).padStart(2,"0"); }
-function balls(ws, b, bn){
-  var w=el("div","balls");
-  ws.forEach(function(n){ w.appendChild(el("span","ball",pad(n))); });
-  var x=el("span","ball bonus",pad(b)); x.title=bn; w.appendChild(x); return w;
-}
-function countdown(ts){
-  var ms=new Date(ts)-new Date();
-  if(ms<=0) return "Draw time has passed";
-  var h=Math.floor(ms/36e5), m=Math.floor(ms%36e5/6e4);
-  return h>=24 ? Math.floor(h/24)+" days "+(h%24)+" hr to draw" : h+" hr "+m+" min to draw";
-}
-(function(){
-  var root=document.getElementById("lotto-games"), extra=document.getElementById("lotto-extra");
-  DATA.games.forEach(function(g){
-    var p=el("div","panel");
-    p.appendChild(el("p","label",g.label+" · "+g.draw_date+" · "+g.draw_time));
-    p.appendChild(el("div","big",countdown(g.draw_ts)));
-    g.picks.forEach(function(r, i){
-      var it=el("div","item"); it.appendChild(el("span","", r[0]+(i===0?" (main pick)":""))); it.appendChild(balls(r[1],r[2],g.bonus_name)); p.appendChild(it);
+var LX = {"games":[{"game":"powerball","label":"Powerball","bonus_name":"Powerball","draw_date":"2026-10-17","draw_time":"10:59 PM ET","draw_ts":"2026-10-17T22:59:00-04:00","odds":292201338,"window_draws":50,"window_start":"2026-06-22","pool":69,"bonus_pool":26,"p1":4,"p2":14,"p3":17,"p4":58,"p5":59,"bonus":3,"total":152,"odd":2,"low":3,"consec":1,"band_lo":139,"band_hi":205,"median_sum":165.0,"balanced":"06 14 21 59 65 + 09","balanced_name":"Balanced profile","overdue":"08 27 43 48 60 + 12","overdue_name":"Overdue gaps","hot":"04 21 23 42 51 + 09","hot_name":"Hot streak (fast decay)","pairs":"09 14 44 55 59 + 03","pairs_name":"Pair affinity","fusion":"04 17 21 23 42","fusion_weighted":"06 27 53 62 64","fusion_z":1.66,"fusion_trusted":8},{"game":"megamillions","label":"Mega Millions","bonus_name":"Mega Ball","draw_date":"2026-10-20","draw_time":"11:00 PM ET","draw_ts":"2026-10-20T23:00:00-04:00","odds":290472336,"window_draws":50,"window_start":"2026-04-24","pool":70,"bonus_pool":24,"p1":17,"p2":26,"p3":30,"p4":48,"p5":51,"bonus":12,"total":172,"odd":2,"low":3,"consec":0,"band_lo":153,"band_hi":204,"median_sum":176.0,"balanced":"17 26 34 48 51 + 12","balanced_name":"Balanced profile","overdue":"18 28 31 52 69 + 05","overdue_name":"Overdue gaps","hot":"07 15 26 40 68 + 17","hot_name":"Hot streak (fast decay)","pairs":"01 26 34 48 51 + 24","pairs_name":"Pair affinity","fusion":"10 16 17 26 58","fusion_weighted":"28 31 39 52 69","fusion_z":-0.51,"fusion_trusted":9}],"numbers":[{"game":"powerball","kind":"white","number":1,"hits20":1,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":2,"avg_gap":50.0,"z_freq":-1.56,"z_due":-0.91,"z_hot":-0.98,"strip":"00100000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":2,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":10,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.04,"z_hot":0.43,"strip":"00000000001010000000000000000000000001010000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":3,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":0,"avg_gap":10.0,"z_freq":0.82,"z_due":-1.13,"z_hot":0.89,"strip":"10000000000000000010001000000000000100000000000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":4,"hits20":3,"hits50":6,"hits_all":6,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":2,"avg_gap":8.3,"z_freq":1.41,"z_due":-0.91,"z_hot":2.17,"strip":"00100110000000000000000000010000000110000000000000","picked":1,"fusion_pick":1,"strategies":2},{"game":"powerball","kind":"white","number":5,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":9,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.15,"z_hot":0.35,"strip":"00000000010000000000000000100100000010001000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":6,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":6,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.48,"z_hot":0.35,"strip":"00000010000000000000000000001000101000000000010000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":7,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":10,"avg_gap":25.0,"z_freq":-0.96,"z_due":-0.04,"z_hot":-0.94,"strip":"00000000001000000000000000000000000000010000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":8,"hits20":0,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":25,"avg_gap":12.5,"z_freq":0.22,"z_due":1.6,"z_hot":-0.41,"strip":"00000000000000000000000001100001000000000100000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":9,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":10,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.04,"z_hot":0.55,"strip":"00000000001000010000000000000100000001100000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":10,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":18,"avg_gap":12.5,"z_freq":0.22,"z_due":0.84,"z_hot":-0.4,"strip":"00000000000000000010000010000000000000000100001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":11,"hits20":2,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":3,"avg_gap":25.0,"z_freq":-0.96,"z_due":-0.8,"z_hot":-0.4,"strip":"00010000000000000001000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":12,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":21,"avg_gap":25.0,"z_freq":-0.96,"z_due":1.17,"z_hot":-1.24,"strip":"00000000000000000000010000000000000000000010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":13,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":3,"avg_gap":16.7,"z_freq":-0.37,"z_due":-0.8,"z_hot":-0.25,"strip":"00010000000000000000000100000000000000000000000010","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":14,"hits20":3,"hits50":8,"hits_all":8,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":3,"avg_gap":6.2,"z_freq":2.6,"z_due":-0.8,"z_hot":2.14,"strip":"00010000100000100000000000000010000000100100001010","picked":1,"fusion_pick":0,"strategies":3},{"game":"powerball","kind":"white","number":15,"hits20":3,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":9,"avg_gap":12.5,"z_freq":0.22,"z_due":-0.15,"z_hot":0.64,"strip":"00000000010000001100000001000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":16,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":4,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.7,"z_hot":0.7,"strip":"00001000000000100000001000000000000000000000000110","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":17,"hits20":3,"hits50":7,"hits_all":7,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":7,"avg_gap":7.1,"z_freq":2.0,"z_due":-0.37,"z_hot":1.46,"strip":"00000001001000000001000000000000100000000001100001","picked":1,"fusion_pick":1,"strategies":1},{"game":"powerball","kind":"white","number":18,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":11,"avg_gap":16.7,"z_freq":-0.37,"z_due":0.07,"z_hot":-0.37,"strip":"00000000000100000000100000000000000000010000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":19,"hits20":3,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":2,"avg_gap":12.5,"z_freq":0.22,"z_due":-0.91,"z_hot":0.69,"strip":"00100000000001001000000000000000000000000000000001","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":20,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":13,"avg_gap":25.0,"z_freq":-0.96,"z_due":0.29,"z_hot":-0.91,"strip":"00000000000001000000000000000010000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":21,"hits20":3,"hits50":6,"hits_all":6,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":3,"avg_gap":8.3,"z_freq":1.41,"z_due":-0.8,"z_hot":1.68,"strip":"00010001000010000000000010000000000000000000000011","picked":0,"fusion_pick":1,"strategies":2},{"game":"powerball","kind":"white","number":22,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":1,"avg_gap":25.0,"z_freq":-0.96,"z_due":-1.02,"z_hot":-0.6,"strip":"01000000000000000000000000000000000010000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":23,"hits20":3,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":4,"avg_gap":16.7,"z_freq":-0.37,"z_due":-0.7,"z_hot":0.66,"strip":"00001010000000100000000000000000000000000000000000","picked":0,"fusion_pick":1,"strategies":1},{"game":"powerball","kind":"white","number":24,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":12,"avg_gap":25.0,"z_freq":-0.96,"z_due":0.18,"z_hot":-0.95,"strip":"00000000000010000000000000000000000100000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":25,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":12,"avg_gap":12.5,"z_freq":0.22,"z_due":0.18,"z_hot":0.12,"strip":"00000000000010000001000001000000000000001000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":26,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":9,"avg_gap":12.5,"z_freq":0.22,"z_due":-0.15,"z_hot":-0.13,"strip":"00000000010000000000000000010000001000000000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":27,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":26,"avg_gap":25.0,"z_freq":-0.96,"z_due":1.71,"z_hot":-1.22,"strip":"00000000000000000000000000100000100000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":28,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":1,"avg_gap":16.7,"z_freq":-0.37,"z_due":-1.02,"z_hot":-0.02,"strip":"01000000000000001000000000000000000000000000000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":29,"hits20":3,"hits50":6,"hits_all":6,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":7,"avg_gap":8.3,"z_freq":1.41,"z_due":-0.37,"z_hot":1.44,"strip":"00000001010000000010000000100000000000010010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":30,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":9,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.15,"z_hot":0.62,"strip":"00000000010100000000000000000001010000000000000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":31,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":23,"avg_gap":50.0,"z_freq":-1.56,"z_due":1.39,"z_hot":-1.56,"strip":"00000000000000000000000100000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":32,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":4,"avg_gap":25.0,"z_freq":-0.96,"z_due":-0.7,"z_hot":-0.48,"strip":"00001000000000000000010000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":33,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":2,"avg_gap":16.7,"z_freq":-0.37,"z_due":-0.91,"z_hot":0.55,"strip":"00100010000000000000001000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":34,"hits20":1,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":0,"avg_gap":50.0,"z_freq":-1.56,"z_due":-1.13,"z_hot":-0.9,"strip":"10000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":35,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":29,"avg_gap":50.0,"z_freq":-1.56,"z_due":2.04,"z_hot":-1.66,"strip":"00000000000000000000000000000100000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":36,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":4,"avg_gap":12.5,"z_freq":0.22,"z_due":-0.7,"z_hot":-0.02,"strip":"00001000000000000000000000000000010100001000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":37,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":0,"avg_gap":12.5,"z_freq":0.22,"z_due":-1.13,"z_hot":0.45,"strip":"10000000000000000001000000001000000000000010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":38,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":1,"avg_gap":10.0,"z_freq":0.82,"z_due":-1.02,"z_hot":0.42,"strip":"01000000000000000000001000000000000000010000100010","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":39,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":16,"avg_gap":25.0,"z_freq":-0.96,"z_due":0.62,"z_hot":-1.16,"strip":"00000000000000001000000000000000000000000000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":40,"hits20":3,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":8,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.26,"z_hot":0.87,"strip":"00000000100000010100000000000000010000001000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":41,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":11,"avg_gap":16.7,"z_freq":-0.37,"z_due":0.07,"z_hot":-0.63,"strip":"00000000000100000000000000000001000000000000001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":42,"hits20":4,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":0,"avg_gap":10.0,"z_freq":0.82,"z_due":-1.13,"z_hot":2.15,"strip":"10000101000000010000000000000000010000000000000000","picked":0,"fusion_pick":1,"strategies":1},{"game":"powerball","kind":"white","number":43,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":42,"avg_gap":50.0,"z_freq":-1.56,"z_due":3.47,"z_hot":-1.82,"strip":"00000000000000000000000000000000000000000010000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":44,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":5,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.59,"z_hot":0.81,"strip":"00000110000000000000000000000000000001100001000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":45,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":11,"avg_gap":12.5,"z_freq":0.22,"z_due":0.07,"z_hot":-0.19,"strip":"00000000000100000000010000000000000000000100000001","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":46,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":0,"avg_gap":16.7,"z_freq":-0.37,"z_due":-1.13,"z_hot":-0.27,"strip":"10000000000000000000000000000000001000000000100000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":47,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":17,"avg_gap":25.0,"z_freq":-0.96,"z_due":0.73,"z_hot":-1.08,"strip":"00000000000000000100000000000000000100000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":48,"hits20":0,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":31,"avg_gap":12.5,"z_freq":0.22,"z_due":2.26,"z_hot":-0.78,"strip":"00000000000000000000000000000001100000001000000001","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":49,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":7,"avg_gap":16.7,"z_freq":-0.37,"z_due":-0.37,"z_hot":-0.03,"strip":"00000001000000000001000001000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":50,"hits20":0,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":21,"avg_gap":10.0,"z_freq":0.82,"z_due":1.17,"z_hot":-0.2,"strip":"00000000000000000000010000000000100010100000100000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":51,"hits20":2,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":1,"avg_gap":25.0,"z_freq":-0.96,"z_due":-1.02,"z_hot":0.18,"strip":"01100000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":52,"hits20":1,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":8,"avg_gap":50.0,"z_freq":-1.56,"z_due":-0.26,"z_hot":-1.19,"strip":"00000000100000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":53,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":17,"avg_gap":16.7,"z_freq":-0.37,"z_due":0.73,"z_hot":-0.86,"strip":"00000000000000000100000000000000000001000000001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":54,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":4,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.7,"z_hot":0.79,"strip":"00001000000000000000000100001101000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":55,"hits20":3,"hits50":5,"hits_all":5,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":5,"avg_gap":10.0,"z_freq":0.82,"z_due":-0.59,"z_hot":1.27,"strip":"00000100100000010000000000001000000000000010000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":56,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":16,"avg_gap":16.7,"z_freq":-0.37,"z_due":0.62,"z_hot":-0.49,"strip":"00000000000000001000100000000000000000100000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":57,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":8,"avg_gap":12.5,"z_freq":0.22,"z_due":-0.26,"z_hot":0.5,"strip":"00000000100001000000000100000000010000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":58,"hits20":3,"hits50":7,"hits_all":7,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":10,"avg_gap":7.1,"z_freq":2.0,"z_due":-0.04,"z_hot":1.95,"strip":"00000000001000100010010010000000001010000000000000","picked":1,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":59,"hits20":2,"hits50":7,"hits_all":7,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":5,"avg_gap":7.1,"z_freq":2.0,"z_due":-0.59,"z_hot":1.1,"strip":"00000100000000000100000000000010000001000100001100","picked":1,"fusion_pick":0,"strategies":3},{"game":"powerball","kind":"white","number":60,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":30,"avg_gap":50.0,"z_freq":-1.56,"z_due":2.15,"z_hot":-1.68,"strip":"00000000000000000000000000000010000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":61,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":13,"avg_gap":16.7,"z_freq":-0.37,"z_due":0.29,"z_hot":-0.39,"strip":"00000000000001000000000010000010000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":62,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":20,"avg_gap":50.0,"z_freq":-1.56,"z_due":1.06,"z_hot":-1.5,"strip":"00000000000000000000100000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":63,"hits20":0,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":26,"avg_gap":16.7,"z_freq":-0.37,"z_due":1.71,"z_hot":-0.9,"strip":"00000000000000000000000000100100000000000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":64,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":12,"avg_gap":12.5,"z_freq":0.22,"z_due":0.18,"z_hot":0.31,"strip":"00000000000010000010000010001000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":65,"hits20":2,"hits50":6,"hits_all":6,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":3,"avg_gap":8.3,"z_freq":1.41,"z_due":-0.8,"z_hot":1.71,"strip":"00010000000000010000100101000000001000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"white","number":66,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":27,"avg_gap":25.0,"z_freq":-0.96,"z_due":1.82,"z_hot":-1.36,"strip":"00000000000000000000000000010000000000000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":67,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":13,"avg_gap":12.5,"z_freq":0.22,"z_due":0.29,"z_hot":0.0,"strip":"00000000000001000000100000010000000000000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":68,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":11,"avg_gap":16.7,"z_freq":-0.37,"z_due":0.07,"z_hot":-0.47,"strip":"00000000000100000000001000000000000000000000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"white","number":69,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.45,"exp50":3.62,"exp_all":3.6,"since_last":1,"avg_gap":12.5,"z_freq":0.22,"z_due":-1.02,"z_hot":0.53,"strip":"01000000000000100000000000010000000000000000100000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":1,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":36,"avg_gap":50.0,"z_freq":-0.73,"z_due":0.77,"z_hot":-0.87,"strip":"00000000000000000000000000000000000010000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":2,"hits20":0,"hits50":3,"hits_all":3,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":21,"avg_gap":16.7,"z_freq":0.85,"z_due":-0.12,"z_hot":0.46,"strip":"00000000000000000000011000000000010000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":3,"hits20":2,"hits50":5,"hits_all":5,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":14,"avg_gap":10.0,"z_freq":2.43,"z_due":-0.53,"z_hot":1.33,"strip":"00000000000000101000000000000000000000101000001000","picked":1,"fusion_pick":0,"strategies":2},{"game":"powerball","kind":"bonus","number":4,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":31,"avg_gap":25.0,"z_freq":0.06,"z_due":0.48,"z_hot":-0.49,"strip":"00000000000000000000000000000001000000000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":5,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":32,"avg_gap":25.0,"z_freq":0.06,"z_due":0.54,"z_hot":-0.48,"strip":"00000000000000000000000000000000100000000100000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":6,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":45,"avg_gap":50.0,"z_freq":-0.73,"z_due":1.31,"z_hot":-0.97,"strip":"00000000000000000000000000000000000000000000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":7,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":7,"avg_gap":16.7,"z_freq":0.85,"z_due":-0.95,"z_hot":1.19,"strip":"00000001000010000000000000000100000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":8,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":37,"avg_gap":50.0,"z_freq":-0.73,"z_due":0.83,"z_hot":-0.88,"strip":"00000000000000000000000000000000000001000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":9,"hits20":3,"hits50":4,"hits_all":4,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":1,"avg_gap":12.5,"z_freq":1.64,"z_due":-1.3,"z_hot":2.51,"strip":"01001000000000000100000000010000000000000000000000","picked":0,"fusion_pick":0,"strategies":2},{"game":"powerball","kind":"bonus","number":10,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":11,"avg_gap":16.7,"z_freq":0.85,"z_due":-0.71,"z_hot":0.88,"strip":"00000000000100000001000000001000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":11,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":47,"avg_gap":50.0,"z_freq":-0.73,"z_due":1.42,"z_hot":-0.99,"strip":"00000000000000000000000000000000000000000000000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":12,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":50,"avg_gap":null,"z_freq":-1.52,"z_due":1.6,"z_hot":-1.26,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"powerball","kind":"bonus","number":13,"hits20":1,"hits50":3,"hits_all":3,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":6,"avg_gap":16.7,"z_freq":0.85,"z_due":-1.0,"z_hot":0.64,"strip":"00000010000000000000000000100000000000000000000001","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":14,"hits20":3,"hits50":4,"hits_all":4,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":5,"avg_gap":12.5,"z_freq":1.64,"z_due":-1.06,"z_hot":1.85,"strip":"00000100010000000010000000000000000000000000000010","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":15,"hits20":1,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":2,"avg_gap":50.0,"z_freq":-0.73,"z_due":-1.24,"z_hot":0.0,"strip":"00100000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":16,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":39,"avg_gap":50.0,"z_freq":-0.73,"z_due":0.95,"z_hot":-0.91,"strip":"00000000000000000000000000000000000000010000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":17,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":24,"avg_gap":25.0,"z_freq":0.06,"z_due":0.06,"z_hot":-0.27,"strip":"00000000000000000000000010000000000100000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":18,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":20,"avg_gap":25.0,"z_freq":0.06,"z_due":-0.18,"z_hot":-0.27,"strip":"00000000000000000000100000000000000000000010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":19,"hits20":1,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":3,"avg_gap":50.0,"z_freq":-0.73,"z_due":-1.18,"z_hot":-0.04,"strip":"00010000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":20,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":0,"avg_gap":16.7,"z_freq":0.85,"z_due":-1.36,"z_hot":1.35,"strip":"10000000001000000000000000000000000000000000100000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":21,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":50,"avg_gap":null,"z_freq":-1.52,"z_due":1.6,"z_hot":-1.26,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":22,"hits20":1,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":13,"avg_gap":25.0,"z_freq":0.06,"z_due":-0.59,"z_hot":0.17,"strip":"00000000000001000000000001000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":23,"hits20":1,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":15,"avg_gap":25.0,"z_freq":0.06,"z_due":-0.47,"z_hot":0.16,"strip":"00000000000000010000000100000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":24,"hits20":1,"hits50":1,"hits_all":1,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":8,"avg_gap":50.0,"z_freq":-0.73,"z_due":-0.89,"z_hot":-0.23,"strip":"00000000100000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":25,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":30,"avg_gap":25.0,"z_freq":0.06,"z_due":0.42,"z_hot":-0.36,"strip":"00000000000000000000000000000010001000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"powerball","kind":"bonus","number":26,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.77,"exp50":1.92,"exp_all":1.9,"since_last":50,"avg_gap":null,"z_freq":-1.52,"z_due":1.6,"z_hot":-1.26,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":1,"hits20":3,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":12,"avg_gap":12.5,"z_freq":0.24,"z_due":0.09,"z_hot":0.36,"strip":"00000000000010010010000000000000000000001000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":2,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":1,"avg_gap":10.0,"z_freq":0.81,"z_due":-0.97,"z_hot":0.99,"strip":"01000000000000000000000100111000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":3,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":9,"avg_gap":16.7,"z_freq":-0.33,"z_due":-0.2,"z_hot":-0.22,"strip":"00000000010000000100000000000000000000000100000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":4,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":7,"avg_gap":16.7,"z_freq":-0.33,"z_due":-0.39,"z_hot":-0.06,"strip":"00000001000000000000010000100000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":5,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":16,"avg_gap":10.0,"z_freq":0.81,"z_due":0.47,"z_hot":0.29,"strip":"00000000000000001000000100000101000000001000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":6,"hits20":2,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":3,"avg_gap":25.0,"z_freq":-0.9,"z_due":-0.78,"z_hot":-0.16,"strip":"00010000000100000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":7,"hits20":3,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":1,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.97,"z_hot":0.97,"strip":"01000010000000100000000000000000000000000000000001","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":8,"hits20":1,"hits50":1,"hits_all":1,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":13,"avg_gap":50.0,"z_freq":-1.47,"z_due":0.18,"z_hot":-1.24,"strip":"00000000000001000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":9,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":7,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.39,"z_hot":0.01,"strip":"00000001000000000000000000000100000110000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":10,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":4,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.68,"z_hot":0.45,"strip":"00001000000000100000000000100000000000000010000000","picked":0,"fusion_pick":1,"strategies":0},{"game":"megamillions","kind":"white","number":11,"hits20":1,"hits50":1,"hits_all":1,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":0,"avg_gap":50.0,"z_freq":-1.47,"z_due":-1.07,"z_hot":-0.83,"strip":"10000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":12,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":0,"avg_gap":16.7,"z_freq":-0.33,"z_due":-1.07,"z_hot":-0.24,"strip":"10000000000000000000000000000000001000000000001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":13,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":6,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.49,"z_hot":0.03,"strip":"00000010000000000000000000000001010001000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":14,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":20,"avg_gap":25.0,"z_freq":-0.9,"z_due":0.86,"z_hot":-1.18,"strip":"00000000000000000000100000000000000000000000000010","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":15,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":0,"avg_gap":16.7,"z_freq":-0.33,"z_due":-1.07,"z_hot":0.47,"strip":"10001000000000000000000000000000000000100000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":16,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":1,"avg_gap":10.0,"z_freq":0.81,"z_due":-0.97,"z_hot":0.92,"strip":"01001000000000000000000000000000010000000000000101","picked":0,"fusion_pick":1,"strategies":0},{"game":"megamillions","kind":"white","number":17,"hits20":3,"hits50":6,"hits_all":6,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":10,"avg_gap":8.3,"z_freq":1.39,"z_due":-0.1,"z_hot":1.0,"strip":"00000000001001000001000000000000000100000001100000","picked":1,"fusion_pick":1,"strategies":2},{"game":"megamillions","kind":"white","number":18,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":21,"avg_gap":50.0,"z_freq":-1.47,"z_due":0.95,"z_hot":-1.41,"strip":"00000000000000000000010000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":19,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":16,"avg_gap":25.0,"z_freq":-0.9,"z_due":0.47,"z_hot":-1.01,"strip":"00000000000000001000000000000000000000010000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":20,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":18,"avg_gap":16.7,"z_freq":-0.33,"z_due":0.66,"z_hot":-0.41,"strip":"00000000000000000011000000000000001000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":21,"hits20":0,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":20,"avg_gap":16.7,"z_freq":-0.33,"z_due":0.86,"z_hot":-0.81,"strip":"00000000000000000000100000000000010000000000000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":22,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":12,"avg_gap":12.5,"z_freq":0.24,"z_due":0.09,"z_hot":-0.23,"strip":"00000000000010000000000001000000000000000100001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":23,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":17,"avg_gap":25.0,"z_freq":-0.9,"z_due":0.57,"z_hot":-1.08,"strip":"00000000000000000100000000000000000000000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":24,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":7,"avg_gap":16.7,"z_freq":-0.33,"z_due":-0.39,"z_hot":-0.44,"strip":"00000001000000000000000000000000000100010000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":25,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":5,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.59,"z_hot":0.42,"strip":"00000100000000010000000010000000000000000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":26,"hits20":3,"hits50":8,"hits_all":8,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":2,"avg_gap":6.2,"z_freq":2.53,"z_due":-0.87,"z_hot":2.68,"strip":"00100010000100000000010000000010010000100010000000","picked":1,"fusion_pick":1,"strategies":4},{"game":"megamillions","kind":"white","number":27,"hits20":3,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":4,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.68,"z_hot":0.74,"strip":"00001000100000000100000000000000000000000000000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":28,"hits20":0,"hits50":0,"hits_all":0,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":50,"avg_gap":null,"z_freq":-2.04,"z_due":3.74,"z_hot":-1.96,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":29,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":13,"avg_gap":25.0,"z_freq":-0.9,"z_due":0.18,"z_hot":-0.82,"strip":"00000000000001000000000000000100000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":30,"hits20":4,"hits50":7,"hits_all":7,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":9,"avg_gap":7.1,"z_freq":1.96,"z_due":-0.2,"z_hot":1.97,"strip":"00000000011000001010000000000001000011000000000000","picked":1,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":31,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":28,"avg_gap":50.0,"z_freq":-1.47,"z_due":1.63,"z_hot":-1.53,"strip":"00000000000000000000000000001000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":32,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":2,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.87,"z_hot":0.14,"strip":"00100000000000000001000000000000000000000000100001","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":33,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":9,"avg_gap":25.0,"z_freq":-0.9,"z_due":-0.2,"z_hot":-0.74,"strip":"00000000010000000000000000000001000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":34,"hits20":2,"hits50":6,"hits_all":6,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":11,"avg_gap":8.3,"z_freq":1.39,"z_due":-0.01,"z_hot":1.04,"strip":"00000000000100010000001001000000000000000110000000","picked":0,"fusion_pick":0,"strategies":2},{"game":"megamillions","kind":"white","number":35,"hits20":0,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":28,"avg_gap":16.7,"z_freq":-0.33,"z_due":1.63,"z_hot":-1.08,"strip":"00000000000000000000000000001000000000000000100001","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":36,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":8,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.3,"z_hot":-0.13,"strip":"00000000100000000000000000001000000010000000000010","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":37,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":3,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.78,"z_hot":0.72,"strip":"00010010000000000000000010000000000000000000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":38,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":16,"avg_gap":25.0,"z_freq":-0.9,"z_due":0.47,"z_hot":-0.98,"strip":"00000000000000001000000000000000000010000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":39,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":27,"avg_gap":25.0,"z_freq":-0.9,"z_due":1.53,"z_hot":-1.18,"strip":"00000000000000000000000000010000000100000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":40,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":0,"avg_gap":10.0,"z_freq":0.81,"z_due":-1.07,"z_hot":0.98,"strip":"10010000000000000000000000000000000010000000100001","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":41,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":3,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.78,"z_hot":-0.1,"strip":"00010000000000000000000000000010000000000000000110","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":42,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":2,"avg_gap":16.7,"z_freq":-0.33,"z_due":-0.87,"z_hot":0.33,"strip":"00100000000001000000000100000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":43,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":8,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.3,"z_hot":0.56,"strip":"00000000101000000000010000000000000000100000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":44,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":23,"avg_gap":25.0,"z_freq":-0.9,"z_due":1.15,"z_hot":-1.0,"strip":"00000000000000000000000100010000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":45,"hits20":0,"hits50":1,"hits_all":1,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":25,"avg_gap":50.0,"z_freq":-1.47,"z_due":1.34,"z_hot":-1.48,"strip":"00000000000000000000000001000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":46,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":17,"avg_gap":16.7,"z_freq":-0.33,"z_due":0.57,"z_hot":-0.28,"strip":"00000000000000000110000000010000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":47,"hits20":1,"hits50":6,"hits_all":6,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":14,"avg_gap":8.3,"z_freq":1.39,"z_due":0.28,"z_hot":0.15,"strip":"00000000000000100000000000000100000000010000110010","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":48,"hits20":2,"hits50":7,"hits_all":7,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":14,"avg_gap":7.1,"z_freq":1.96,"z_due":0.28,"z_hot":1.56,"strip":"00000000000000110000001001100000100000100000000000","picked":1,"fusion_pick":0,"strategies":3},{"game":"megamillions","kind":"white","number":49,"hits20":0,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":22,"avg_gap":16.7,"z_freq":-0.33,"z_due":1.05,"z_hot":-0.91,"strip":"00000000000000000000001000000000000000001000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":50,"hits20":1,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":14,"avg_gap":10.0,"z_freq":0.81,"z_due":0.28,"z_hot":0.05,"strip":"00000000000000100000000000000010010001000000001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":51,"hits20":2,"hits50":9,"hits_all":9,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":2,"avg_gap":5.6,"z_freq":3.1,"z_due":-0.87,"z_hot":2.43,"strip":"00100000000010000000110000000000100100001000011000","picked":1,"fusion_pick":0,"strategies":3},{"game":"megamillions","kind":"white","number":52,"hits20":0,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":31,"avg_gap":16.7,"z_freq":-0.33,"z_due":1.92,"z_hot":-1.0,"strip":"00000000000000000000000000000001000001000001000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":53,"hits20":1,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":9,"avg_gap":16.7,"z_freq":-0.33,"z_due":-0.2,"z_hot":-0.38,"strip":"00000000010000000000000000000010001000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":54,"hits20":2,"hits50":3,"hits_all":3,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":2,"avg_gap":16.7,"z_freq":-0.33,"z_due":-0.87,"z_hot":-0.04,"strip":"00100000000000000001000000000000000000000100000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":55,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":3,"avg_gap":10.0,"z_freq":0.81,"z_due":-0.78,"z_hot":1.06,"strip":"00010000000001000000100001000000000000000000001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":56,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":7,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.39,"z_hot":0.1,"strip":"00000001000000000000000000110000000000000010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":57,"hits20":4,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":5,"avg_gap":10.0,"z_freq":0.81,"z_due":-0.59,"z_hot":1.54,"strip":"00000100100000010001000000000100000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":58,"hits20":3,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":5,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.59,"z_hot":0.9,"strip":"00000100101000000000000000000000000000000000010000","picked":0,"fusion_pick":1,"strategies":0},{"game":"megamillions","kind":"white","number":59,"hits20":2,"hits50":6,"hits_all":6,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":11,"avg_gap":8.3,"z_freq":1.39,"z_due":-0.01,"z_hot":1.07,"strip":"00000000000100001000001010000000000000011000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":60,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":17,"avg_gap":12.5,"z_freq":0.24,"z_due":0.57,"z_hot":-0.14,"strip":"00000000000000000100000100000000100000100000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":61,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":11,"avg_gap":10.0,"z_freq":0.81,"z_due":-0.01,"z_hot":0.32,"strip":"00000000000110000000000000000000000000000101000100","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":62,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":9,"avg_gap":25.0,"z_freq":-0.9,"z_due":-0.2,"z_hot":-0.73,"strip":"00000000010000000000000000000010000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":63,"hits20":2,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":1,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.97,"z_hot":0.69,"strip":"01000000000010000000000000001000100000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":64,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":4,"avg_gap":25.0,"z_freq":-0.9,"z_due":-0.68,"z_hot":-0.71,"strip":"00001000000000000000000000000000000000000010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":65,"hits20":0,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":20,"avg_gap":25.0,"z_freq":-0.9,"z_due":0.86,"z_hot":-1.1,"strip":"00000000000000000000100000000000000000010000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":66,"hits20":2,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":0,"avg_gap":10.0,"z_freq":0.81,"z_due":-1.07,"z_hot":0.88,"strip":"10000000001000000000000000000000100001000000000010","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":67,"hits20":1,"hits50":2,"hits_all":2,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":5,"avg_gap":25.0,"z_freq":-0.9,"z_due":-0.59,"z_hot":-0.66,"strip":"00000100000000000000000000000000001000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"white","number":68,"hits20":4,"hits50":5,"hits_all":5,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":5,"avg_gap":10.0,"z_freq":0.81,"z_due":-0.59,"z_hot":1.91,"strip":"00000111000000000010000010000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":69,"hits20":0,"hits50":0,"hits_all":0,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":50,"avg_gap":null,"z_freq":-2.04,"z_due":3.74,"z_hot":-1.96,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"white","number":70,"hits20":1,"hits50":4,"hits_all":4,"exp20":1.43,"exp50":3.57,"exp_all":3.6,"since_last":1,"avg_gap":12.5,"z_freq":0.24,"z_due":-0.97,"z_hot":0.51,"strip":"01000000000000000000001010000000001000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":1,"hits20":1,"hits50":2,"hits_all":2,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":7,"avg_gap":25.0,"z_freq":-0.05,"z_due":-0.86,"z_hot":0.27,"strip":"00000001000000000000000100000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":2,"hits20":1,"hits50":2,"hits_all":2,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":13,"avg_gap":25.0,"z_freq":-0.05,"z_due":-0.53,"z_hot":-0.11,"strip":"00000000000001000000000000000000000001000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":3,"hits20":0,"hits50":3,"hits_all":3,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":35,"avg_gap":16.7,"z_freq":0.52,"z_due":0.66,"z_hot":-0.23,"strip":"00000000000000000000000000000000000110000001000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":4,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":21,"avg_gap":50.0,"z_freq":-0.62,"z_due":-0.1,"z_hot":-0.62,"strip":"00000000000000000000010000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":5,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":50,"avg_gap":null,"z_freq":-1.19,"z_due":1.48,"z_hot":-1.2,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"bonus","number":6,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":31,"avg_gap":25.0,"z_freq":-0.05,"z_due":0.45,"z_hot":-0.51,"strip":"00000000000000000000000000000001000000000010000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":7,"hits20":0,"hits50":2,"hits_all":2,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":39,"avg_gap":25.0,"z_freq":-0.05,"z_due":0.88,"z_hot":-0.59,"strip":"00000000000000000000000000000000000000011000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":8,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":1,"avg_gap":16.7,"z_freq":0.52,"z_due":-1.18,"z_hot":1.2,"strip":"01000010000000000000000000000000000000000100000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":9,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":50,"avg_gap":null,"z_freq":-1.19,"z_due":1.48,"z_hot":-1.2,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":10,"hits20":1,"hits50":3,"hits_all":3,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":3,"avg_gap":16.7,"z_freq":0.52,"z_due":-1.08,"z_hot":0.63,"strip":"00010000000000000000000010000000000000000000001000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":11,"hits20":1,"hits50":1,"hits_all":1,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":17,"avg_gap":50.0,"z_freq":-0.62,"z_due":-0.31,"z_hot":-0.54,"strip":"00000000000000000100000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":12,"hits20":1,"hits50":8,"hits_all":8,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":16,"avg_gap":6.2,"z_freq":3.37,"z_due":-0.37,"z_hot":2.19,"strip":"00000000000000001000001000001010011000100000000001","picked":1,"fusion_pick":0,"strategies":2},{"game":"megamillions","kind":"bonus","number":13,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":50,"avg_gap":null,"z_freq":-1.19,"z_due":1.48,"z_hot":-1.2,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":14,"hits20":1,"hits50":2,"hits_all":2,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":14,"avg_gap":25.0,"z_freq":-0.05,"z_due":-0.48,"z_hot":0.03,"strip":"00000000000000100000000001000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":15,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":48,"avg_gap":50.0,"z_freq":-0.62,"z_due":1.37,"z_hot":-0.97,"strip":"00000000000000000000000000000000000000000000000010","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":16,"hits20":2,"hits50":4,"hits_all":4,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":5,"avg_gap":12.5,"z_freq":1.09,"z_due":-0.97,"z_hot":1.39,"strip":"00000100100000000000000000000100000000000000010000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":17,"hits20":3,"hits50":4,"hits_all":4,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":0,"avg_gap":12.5,"z_freq":1.09,"z_due":-1.24,"z_hot":1.67,"strip":"10000000000010000010000000000000000000000000100000","picked":0,"fusion_pick":0,"strategies":1},{"game":"megamillions","kind":"bonus","number":18,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":50,"avg_gap":null,"z_freq":-1.19,"z_due":1.48,"z_hot":-1.2,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":19,"hits20":0,"hits50":0,"hits_all":0,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":50,"avg_gap":null,"z_freq":-1.19,"z_due":1.48,"z_hot":-1.2,"strip":"00000000000000000000000000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":20,"hits20":1,"hits50":2,"hits_all":2,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":10,"avg_gap":25.0,"z_freq":-0.05,"z_due":-0.7,"z_hot":0.04,"strip":"00000000001000000000000000000000100000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":21,"hits20":0,"hits50":1,"hits_all":1,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":20,"avg_gap":50.0,"z_freq":-0.62,"z_due":-0.15,"z_hot":-0.6,"strip":"00000000000000000000100000000000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":22,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":2,"avg_gap":16.7,"z_freq":0.52,"z_due":-1.13,"z_hot":1.26,"strip":"00100000010000000000000000100000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":23,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":4,"avg_gap":16.7,"z_freq":0.52,"z_due":-1.02,"z_hot":0.92,"strip":"00001000000000000001000000010000000000000000000000","picked":0,"fusion_pick":0,"strategies":0},{"game":"megamillions","kind":"bonus","number":24,"hits20":2,"hits50":3,"hits_all":3,"exp20":0.83,"exp50":2.08,"exp_all":2.1,"since_last":11,"avg_gap":16.7,"z_freq":0.52,"z_due":-0.64,"z_hot":0.55,"strip":"00000000000100010000000000000000000000000000000100","picked":0,"fusion_pick":0,"strategies":1}],"draws":[{"game":"powerball","date":"2026-10-14","n1":3,"n2":34,"n3":37,"n4":42,"n5":46,"bonus":20,"overlap":0},{"game":"powerball","date":"2026-10-12","n1":22,"n2":28,"n3":38,"n4":51,"n5":69,"bonus":9,"overlap":0},{"game":"powerball","date":"2026-10-10","n1":1,"n2":4,"n3":19,"n4":33,"n5":51,"bonus":15,"overlap":1},{"game":"powerball","date":"2026-10-07","n1":11,"n2":13,"n3":14,"n4":21,"n5":65,"bonus":19,"overlap":1},{"game":"powerball","date":"2026-10-05","n1":16,"n2":23,"n3":32,"n4":36,"n5":54,"bonus":9,"overlap":0},{"game":"powerball","date":"2026-10-03","n1":4,"n2":42,"n3":44,"n4":55,"n5":59,"bonus":14,"overlap":2},{"game":"powerball","date":"2026-09-30","n1":4,"n2":6,"n3":23,"n4":33,"n5":44,"bonus":13,"overlap":1},{"game":"powerball","date":"2026-09-28","n1":17,"n2":21,"n3":29,"n4":42,"n5":49,"bonus":7,"overlap":1},{"game":"powerball","date":"2026-09-26","n1":14,"n2":40,"n3":52,"n4":55,"n5":57,"bonus":24,"overlap":1},{"game":"powerball","date":"2026-09-23","n1":5,"n2":15,"n3":26,"n4":29,"n5":30,"bonus":14,"overlap":0},{"game":"powerball","date":"2026-09-21","n1":2,"n2":7,"n3":9,"n4":17,"n5":58,"bonus":20,"overlap":2},{"game":"powerball","date":"2026-09-19","n1":18,"n2":30,"n3":41,"n4":45,"n5":68,"bonus":10,"overlap":0},{"game":"powerball","date":"2026-09-16","n1":2,"n2":21,"n3":24,"n4":25,"n5":64,"bonus":7,"overlap":0},{"game":"powerball","date":"2026-09-14","n1":19,"n2":20,"n3":57,"n4":61,"n5":67,"bonus":22,"overlap":0},{"game":"megamillions","date":"2026-10-13","n1":11,"n2":12,"n3":15,"n4":40,"n5":66,"bonus":17,"overlap":0},{"game":"megamillions","date":"2026-10-09","n1":2,"n2":7,"n3":16,"n4":63,"n5":70,"bonus":8,"overlap":0},{"game":"megamillions","date":"2026-10-06","n1":26,"n2":32,"n3":42,"n4":51,"n5":54,"bonus":22,"overlap":2},{"game":"megamillions","date":"2026-10-02","n1":6,"n2":37,"n3":40,"n4":41,"n5":55,"bonus":10,"overlap":0},{"game":"megamillions","date":"2026-09-29","n1":10,"n2":15,"n3":16,"n4":27,"n5":64,"bonus":23,"overlap":0},{"game":"megamillions","date":"2026-09-25","n1":25,"n2":57,"n3":58,"n4":67,"n5":68,"bonus":16,"overlap":0},{"game":"megamillions","date":"2026-09-22","n1":7,"n2":13,"n3":26,"n4":37,"n5":68,"bonus":8,"overlap":1},{"game":"megamillions","date":"2026-09-18","n1":4,"n2":9,"n3":24,"n4":56,"n5":68,"bonus":1,"overlap":0},{"game":"megamillions","date":"2026-09-15","n1":27,"n2":36,"n3":43,"n4":57,"n5":58,"bonus":16,"overlap":0},{"game":"megamillions","date":"2026-09-11","n1":3,"n2":30,"n3":33,"n4":53,"n5":62,"bonus":22,"overlap":1},{"game":"megamillions","date":"2026-09-08","n1":17,"n2":30,"n3":43,"n4":58,"n5":66,"bonus":20,"overlap":2},{"game":"megamillions","date":"2026-09-04","n1":6,"n2":26,"n3":34,"n4":59,"n5":61,"bonus":24,"overlap":1},{"game":"megamillions","date":"2026-09-01","n1":1,"n2":22,"n3":51,"n4":61,"n5":63,"bonus":17,"overlap":1},{"game":"megamillions","date":"2026-08-28","n1":8,"n2":17,"n3":29,"n4":42,"n5":55,"bonus":2,"overlap":1}],"prizes":[{"game":"powerball","tier":1,"match":"5 + Powerball","base_prize":"Jackpot","boosted_prize":"Jackpot","odds":"1 in 292,201,338"},{"game":"powerball","tier":2,"match":"5 white","base_prize":"$1,000,000","boosted_prize":"$2,000,000 with Power Play","odds":"1 in 11,688,054"},{"game":"powerball","tier":3,"match":"4 + Powerball","base_prize":"$50,000","boosted_prize":"$100,000 to $250,000 with Power Play","odds":"1 in 913,129"},{"game":"powerball","tier":4,"match":"4 white","base_prize":"$100","boosted_prize":"$200 to $500 with Power Play","odds":"1 in 36,525"},{"game":"powerball","tier":5,"match":"3 + Powerball","base_prize":"$100","boosted_prize":"$200 to $500 with Power Play","odds":"1 in 14,494"},{"game":"powerball","tier":6,"match":"3 white","base_prize":"$7","boosted_prize":"$14 to $35 with Power Play","odds":"1 in 580"},{"game":"powerball","tier":7,"match":"2 + Powerball","base_prize":"$7","boosted_prize":"$14 to $35 with Power Play","odds":"1 in 701"},{"game":"powerball","tier":8,"match":"1 + Powerball","base_prize":"$4","boosted_prize":"$8 to $20 with Power Play","odds":"1 in 92"},{"game":"powerball","tier":9,"match":"Powerball only","base_prize":"$4","boosted_prize":"$8 to $20 with Power Play","odds":"1 in 38"},{"game":"megamillions","tier":1,"match":"5 + Mega Ball","base_prize":"Jackpot","boosted_prize":"Jackpot","odds":"1 in 290,472,336"},{"game":"megamillions","tier":2,"match":"5 white","base_prize":"$1,000,000","boosted_prize":"$2M to $10M with multiplier","odds":"1 in 12,629,232"},{"game":"megamillions","tier":3,"match":"4 + Mega Ball","base_prize":"$10,000","boosted_prize":"$20K to $100K with multiplier","odds":"1 in 893,761"},{"game":"megamillions","tier":4,"match":"4 white","base_prize":"$500","boosted_prize":"$1K to $5K with multiplier","odds":"1 in 38,859"},{"game":"megamillions","tier":5,"match":"3 + Mega Ball","base_prize":"$200","boosted_prize":"$400 to $2K with multiplier","odds":"1 in 13,965"},{"game":"megamillions","tier":6,"match":"3 white","base_prize":"$10","boosted_prize":"$20 to $100 with multiplier","odds":"1 in 607"},{"game":"megamillions","tier":7,"match":"2 + Mega Ball","base_prize":"$10","boosted_prize":"$20 to $100 with multiplier","odds":"1 in 665"},{"game":"megamillions","tier":8,"match":"1 + Mega Ball","base_prize":"$7","boosted_prize":"$14 to $70 with multiplier","odds":"1 in 85"},{"game":"megamillions","tier":9,"match":"Mega Ball only","base_prize":"$5","boosted_prize":"$10 to $50 with multiplier","odds":"1 in 35"}],"gameinfo":[{"game":"powerball","price":"$2","addons":"Power Play +$1 (2x to 10x on non-jackpot prizes). Double Play +$1 (second draw, $10 million top prize).","pick":"5 white numbers from 1 to 69, plus 1 Powerball from 1 to 26","draw_days":"Monday, Wednesday, Saturday at 10:59 PM ET","retail_cutoff":"9:59 PM","online_cutoff":"9:57 PM","multidraw":"Up to 30 draws","jackpot":"$600 million","cash_value":"$246 million","jackpot_asof":"NC Lottery site, Oct 17","any_prize_odds":"1 in 24.87","claim_days":"180","min_age":"18"},{"game":"megamillions","price":"$5","addons":"Multiplier is built in (2x to 10x on non-jackpot prizes, printed on your ticket).","pick":"5 white numbers from 1 to 70, plus 1 Mega Ball from 1 to 24","draw_days":"Tuesday and Friday at about 11:00 PM ET","retail_cutoff":"10:45 PM","online_cutoff":"10:43 PM","multidraw":"Up to 26 draws","jackpot":"$403 million","cash_value":"$162.1 million","jackpot_asof":"NC Lottery site, Oct 17 (listed for the Oct 16 draw, so it may have changed)","any_prize_odds":"1 in 23.07","claim_days":"180","min_age":"18"}]};
+(function () {
+
+(function () {
+  const root = document.getElementById('lx-root');
+  const $ = (s, r) => (r || document).querySelector(s);
+  const fmtDate = (iso) => new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', timeZone: 'UTC' });
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const mark = (e, source, where, field) => { e.setAttribute('data-source', source); if (where) e.setAttribute('data-where', where); if (field) e.setAttribute('data-field', field); return e; };
+  const ts = {};
+  let animated = false;
+
+  function countdown() {
+    ['powerball', 'megamillions'].forEach((g) => {
+      const out = $('#' + g + ' .lx-count-num'); if (!out || !ts[g]) return;
+      const ms = Date.parse(ts[g]) - Date.now();
+      if (ms <= 0) { out.textContent = 'Drawn'; $('#' + g + ' .lx-count-lbl').textContent = 'check the results'; return; }
+      const m = Math.floor(ms / 60000), d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60), mm = m % 60;
+      out.textContent = d > 0 ? d + 'd ' + h + 'h ' + mm + 'm' : h + 'h ' + String(mm).padStart(2, '0') + 'm';
+      $('#' + g + ' .lx-count-lbl').textContent = 'until the draw';
     });
-    p.appendChild(el("p","noise","Jackpot odds: 1 in "+g.odds.toLocaleString("en-US")+" per line."));
-    root.appendChild(p);
-    var q=el("div","panel");
-    q.appendChild(el("p","label",g.label+" · last "+g.window+" draws"));
-    var hot=el("div","item"); hot.appendChild(el("b","","Hot (hits in last 20)")); hot.appendChild(el("span","num",g.hot.map(function(x){return pad(x[0])+" ("+x[1]+")";}).join("   ")));
-    var due=el("div","item"); due.appendChild(el("b","","Most overdue (draws since last seen)")); due.appendChild(el("span","num",g.due.map(function(x){return pad(x[0])+" ("+x[1]+")";}).join("   ")));
-    q.appendChild(hot); q.appendChild(due);
-    DATA.draws.filter(function(d){return d.game===g.game;}).slice(0,5).forEach(function(d){
-      var it=el("div","item"); it.appendChild(el("span","num",d.date)); it.appendChild(balls([d.n1,d.n2,d.n3,d.n4,d.n5], d.bonus, g.bonus_name)); q.appendChild(it);
+  }
+  setInterval(countdown, 20000);
+
+  function reasonFor(r) {
+    const comps = [['frequent', r.z_freq, 'it comes up more often than most numbers'], ['overdue', r.z_due, 'it has been absent longer than usual'], ['on a hot streak', r.z_hot, 'it has been drawn a lot in the most recent draws']];
+    comps.sort((a, b) => b[1] - a[1]);
+    const top = comps[0];
+    return top[1] > 0.4 ? ['Picked as ' + top[0], top[2]] : ['Balanced pick', 'no single signal stands out; it fills out a balanced mix'];
+  }
+
+  function card(r, g, bonus) {
+    const c = el('div', 'lx-card');
+    const where = 'game=' + g + '&kind=' + r.kind + '&number=' + r.number;
+    const h = el('div', 'lx-card-h');
+    h.append(mark(el('span', 'lx-ball' + (bonus ? ' bonus' : ''), r.number), 'numbers', where, 'number'));
+    const [head, sub] = reasonFor(r);
+    const why = el('div', 'lx-reason', head); why.append(el('small', null, sub)); h.append(why);
+    c.append(h);
+    const strip = mark(el('div', 'lx-strip'), 'numbers', where, null);
+    strip.removeAttribute('data-field'); strip.setAttribute('role', 'img');
+    strip.setAttribute('aria-label', 'Drawn in ' + r.hits50 + ' of the last 50 draws');
+    const s = (r.strip || '').split('').reverse();
+    s.forEach((ch) => strip.append(el('i', ch === '1' ? 'on' : '')));
+    c.append(strip);
+    const cap = el('div', 'lx-stripcap'); cap.append(el('span', null, '50 draws ago'), el('span', null, 'latest')); c.append(cap);
+    const f = el('ul', 'lx-facts');
+    const l1 = el('li'); l1.append('Drawn ', mark(el('b', null, r.hits50), 'numbers', where, 'hits50'), ' of the last 50 draws (chance expects ', mark(el('b', null, r.exp50), 'numbers', where, 'exp50'), ')');
+    const l2 = el('li'); l2.append('Drawn ', mark(el('b', null, r.hits20), 'numbers', where, 'hits20'), ' of the last 20 (chance expects ', mark(el('b', null, r.exp20), 'numbers', where, 'exp20'), ')');
+    const l3 = el('li');
+    if (r.since_last === 0) l3.append('Came up in the latest draw');
+    else l3.append('Last seen ', mark(el('b', null, r.since_last), 'numbers', where, 'since_last'), ' draws ago');
+    if (r.avg_gap != null) l3.append(', usually back every ', mark(el('b', null, r.avg_gap), 'numbers', where, 'avg_gap'), ' draws');
+    f.append(l1, l2, l3);
+    if (r.strategies > 1) { const l4 = el('li'); l4.append('Also chosen by ', mark(el('b', null, r.strategies), 'numbers', where, 'strategies'), ' of the 5 strategies'); f.append(l4); }
+    c.append(f);
+    const m = el('div', 'lx-meters');
+    [['Frequency', r.z_freq, 'z_freq'], ['Overdue', r.z_due, 'z_due'], ['Hot streak', r.z_hot, 'z_hot']].forEach(([name, z, fld]) => {
+      const row = el('div', 'lx-meter'); row.append(el('span', null, name));
+      const bar = mark(el('div'), 'numbers', where, fld); bar.setAttribute('aria-label', name + ' score ' + z);
+      const pct = Math.max(-2.5, Math.min(2.5, z)) / 2.5 * 50, i = el('span');
+      i.style.left = (pct >= 0 ? 50 : 50 + pct) + '%'; i.style.width = Math.abs(pct) + '%';
+      bar.append(i); row.append(bar); m.append(row);
     });
-    extra.appendChild(q);
-  });
+    c.append(m);
+    return c;
+  }
+
+  function heat(g, nums, pool) {
+    const box = $('#' + g + '-heat'), tip = $('#' + g + '-tip'); box.replaceChildren();
+    const rows = nums.filter((r) => r.game === g && r.kind === 'white').sort((a, b) => a.number - b.number);
+    rows.forEach((r) => {
+      const ratio = r.exp50 ? r.hits50 / r.exp50 : 1;
+      const cell = el('div', 'lx-cell' + (r.picked ? ' pick' : '') + (r.fusion_pick ? ' fus' : ''), r.number);
+      cell.style.setProperty('--h', Math.max(0, Math.min(1, (ratio - 0.2) / 1.9)).toFixed(2));
+      cell.addEventListener('pointerenter', () => {
+        tip.replaceChildren(); const b = el('b', null, String(r.number)); tip.append(b, ' · ' + r.hits50 + ' of last 50 draws (expect ' + r.exp50 + ')', document.createElement('br'),
+          r.since_last === 0 ? 'in the latest draw' : 'last seen ' + r.since_last + ' draws ago', r.picked ? ' · picked' : '');
+        tip.hidden = false;
+        const wr = box.parentElement.getBoundingClientRect(), cr = cell.getBoundingClientRect();
+        tip.style.left = Math.max(0, Math.min(wr.width - tip.offsetWidth, cr.left - wr.left - tip.offsetWidth / 2 + cr.width / 2)) + 'px';
+        tip.style.top = (cr.top - wr.top - tip.offsetHeight - 6) + 'px';
+      });
+      cell.addEventListener('pointerleave', () => { tip.hidden = true; });
+      box.append(cell);
+    });
+  }
+
+  function strats(g, row) {
+    const ul = $('#' + g + '-strats'); ul.replaceChildren();
+    const add = (name, field, text) => {
+      const li = el('li'); li.append(el('span', 'nm', name));
+      const v = el('span', 'nums', text); if (field) mark(v, 'games', 'game=' + g, field); li.append(v); ul.append(li);
+    };
+    const main = [row.p1, row.p2, row.p3, row.p4, row.p5].map((x) => String(x).padStart(2, '0')).join(' ') + ' + ' + String(row.bonus).padStart(2, '0');
+    add('Formula (main pick above)', null, main);
+    ['balanced', 'overdue', 'hot', 'pairs'].forEach((k) => { if (row[k]) add(row[k + '_name'], k, row[k]); });
+    if (row.fusion) add('Fusion engine, equal vote', 'fusion', row.fusion);
+    if (row.fusion_weighted) add('Fusion engine, track-record weighted', 'fusion_weighted', row.fusion_weighted);
+  }
+
+  function recent(g, draws, row) {
+    const tb = $('#' + g + '-recent tbody'); tb.replaceChildren();
+    const mine = new Set([row.p1, row.p2, row.p3, row.p4, row.p5]);
+    draws.filter((d) => d.game === g).forEach((d) => {
+      const tr = el('tr'); tr.dataset.key = d.date;
+      tr.append(el('td', null, d.date));
+      ['n1', 'n2', 'n3', 'n4', 'n5'].forEach((k) => tr.append(el('td', mine.has(d[k]) ? 'hit' : '', d[k])));
+      tr.append(el('td', d.bonus === row.bonus ? 'hit' : '', d.bonus), el('td', null, d.overlap));
+      tb.append(tr);
+    });
+  }
+
+
+  function prizes(g, P) {
+    const tb = $('#' + g + '-prizes tbody'); tb.replaceChildren();
+    P.filter((r) => r.game === g).sort((a, b) => a.tier - b.tier).forEach((r) => {
+      const tr = el('tr'); tr.dataset.key = r.game + ',' + r.tier;
+      tr.append(el('td', null, r.match), el('td', null, r.base_prize), el('td', null, r.boosted_prize), el('td', null, r.odds));
+      tb.append(tr);
+    });
+  }
+
+  function paint() {
+    const G = {status:'ok', data: LX.games}, N = {status:'ok', data: LX.numbers}, D = {status:'ok', data: LX.draws}, P = {status:'ok', data: LX.prizes}, I = {status:'ok', data: LX.gameinfo};
+    if (G.status !== 'ok' || N.status !== 'ok' || D.status !== 'ok' || P.status !== 'ok' || I.status !== 'ok') return;
+    const info = {}; I.data.forEach((r) => { info[r.game] = r; });
+    const rowsG = {}; G.data.forEach((r) => { rowsG[r.game] = r; });
+    const order = Object.values(rowsG).sort((a, b) => a.draw_ts.localeCompare(b.draw_ts));
+    order.forEach((row) => {
+      const g = row.game, sec = $('#' + g);
+      ts[g] = row.draw_ts;
+      sec.querySelectorAll('[data-source="games"][data-field]').forEach((e) => { const v = row[e.dataset.field]; e.textContent = v == null ? '—' : v; });
+      $('.lx-date', sec).textContent = fmtDate(row.draw_date); $('.lx-time', sec).textContent = row.draw_time;
+      $('.lx-even', sec).textContent = 5 - row.odd; $('.lx-high', sec).textContent = 5 - row.low;
+      $('.lx-s', sec).textContent = row.consec === 1 ? '' : 's';
+      $('.lx-odds', sec).textContent = row.odds.toLocaleString('en-US');
+      const why = $('#' + g + '-why'); why.replaceChildren();
+      N.data.filter((r) => r.game === g && r.kind === 'white' && r.picked).sort((a, b) => a.number - b.number).forEach((r) => why.append(card(r, g, false)));
+      N.data.filter((r) => r.game === g && r.kind === 'bonus' && r.picked).forEach((r) => why.append(card(r, g, true)));
+      heat(g, N.data, row.pool); strats(g, row); recent(g, D.data, row); prizes(g, P.data);
+      sec.querySelectorAll('[data-source="gameinfo"][data-field]').forEach((e) => { const v = (info[g] || {})[e.dataset.field]; e.textContent = v == null ? '—' : v; });
+    });
+    root.querySelectorAll('.lx-glance [data-source="gameinfo"][data-field]').forEach((e) => { const g = e.dataset.where.split('=')[1]; const v = (info[g] || {})[e.dataset.field]; e.textContent = v == null ? '—' : v; });
+    root.querySelectorAll('.lx-glance [data-source="prizes"][data-field]').forEach((e) => { const q = new URLSearchParams(e.dataset.where); const r = P.data.find((x) => x.game === q.get('game') && String(x.tier) === q.get('tier')); e.textContent = r ? r[e.dataset.field] : '—'; });
+    const parts = order.map((r) => r.label + ' ' + fmtDate(r.draw_date) + ' at ' + r.draw_time);
+    $('#lx-takeaway').textContent = 'Next up: ' + parts.join('. Then ') + '.';
+    if (!animated) { root.classList.add('lx-in'); animated = true; }
+    countdown();
+  }
+
+  document.querySelectorAll('.lx-nav button').forEach((b) => b.addEventListener('click', () => {
+    const t = document.getElementById(b.dataset.go); if (t) { t.scrollIntoView({ behavior: 'smooth' }); }
+  }));
+  paint();
+  
+})();
+
 })();
 (function () {
   var tabs = ["today", "lottery", "stocks", "agents"];
