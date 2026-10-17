@@ -1,0 +1,240 @@
+<title>Manohar's Daily Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: slim masthead with date, three tabs, then a two-column brief (needs-action list beside inbox groups) that stacks on phones. */
+:root {
+  --bg: #f2f5f7;
+  --panel: #ffffff;
+  --fg: #13202b;
+  --muted: #5a6b78;
+  --line: #d9e1e7;
+  --accent: #0e6b73;
+  --accent-soft: #dcf0f1;
+  --warn: #a45a00;
+  --warn-soft: #fbeed8;
+  --font-display: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f171e; --panel: #172430; --fg: #e6eef4; --muted: #93a6b4; --line: #26394a;
+    --accent: #5cc4cc; --accent-soft: #15353a; --warn: #f0b259; --warn-soft: #3a2b12;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f171e; --panel: #172430; --fg: #e6eef4; --muted: #93a6b4; --line: #26394a;
+  --accent: #5cc4cc; --accent-soft: #15353a; --warn: #f0b259; --warn-soft: #3a2b12;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body);
+  font-size: 15px; line-height: 1.5;
+  padding-block: 20px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 18px; }
+h1 { font-family: var(--font-display); font-size: clamp(26px, 5vw, 36px); line-height: 1.1; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+.stamp { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+nav { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 22px; overflow-x: auto; }
+nav button {
+  font: 500 14px var(--font-body); color: var(--muted); background: none; border: 0;
+  padding: 10px 14px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap;
+}
+nav button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+nav button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section[hidden] { display: none; }
+.grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 20px; align-items: start; }
+@media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+h2 { font-family: var(--font-display); font-size: 18px; margin: 0 0 10px; }
+.label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
+.item { padding: 10px 0; border-top: 1px solid var(--line); display: grid; gap: 2px; }
+.item:first-of-type { border-top: 0; padding-top: 0; }
+.item:last-child { padding-bottom: 0; }
+.item b { font-weight: 600; }
+.item span { color: var(--muted); font-size: 14px; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-right: 6px; vertical-align: 1px; }
+.tag.warn { background: var(--warn-soft); color: var(--warn); }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.noise { font-size: 14px; color: var(--muted); margin: 0; }
+a { color: var(--accent); }
+.card-link { display: block; text-decoration: none; color: inherit; }
+.card-link .panel { border-color: var(--accent); }
+.big { font-family: var(--font-display); font-size: 24px; margin: 4px 0 6px; }
+.btn { display: inline-block; margin-top: 10px; padding: 8px 14px; border-radius: 8px; background: var(--accent); color: var(--bg); font-weight: 600; text-decoration: none; }
+.empty { border-style: dashed; }
+.balls { display: flex; flex-wrap: wrap; gap: 6px; }
+.ball { font-family: var(--font-mono); font-size: 13px; width: 32px; height: 32px; display: inline-grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); }
+.ball.bonus { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+ol.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Daily Brief</h1>
+    <div class="stamp">Saturday, Oct 17, 2026 · inbox read 4:05 PM ET</div>
+  </header>
+
+  <nav role="tablist" aria-label="Brief sections">
+    <button role="tab" id="t-today" aria-selected="true" data-tab="today">Today &amp; Gmail</button>
+    <button role="tab" id="t-lottery" aria-selected="false" data-tab="lottery">Lottery</button>
+    <button role="tab" id="t-stocks" aria-selected="false" data-tab="stocks">Stocks</button>
+    <button role="tab" id="t-agents" aria-selected="false" data-tab="agents">Agents</button>
+  </nav>
+
+  <section id="today" role="tabpanel" aria-labelledby="t-today">
+    <div class="grid">
+      <div class="col">
+        <div class="panel">
+          <p class="label">Needs you</p>
+          <div class="item">
+            <b><span class="tag warn">Billing</span>Nourish charged your card in full</b>
+            <span>Your 9/29 appointment went to deductible because no selection was made, so the full amount was billed. Reply to Nourish support if you want it changed.</span>
+          </div>
+          <div class="item">
+            <b><span class="tag">Tomorrow</span>Wake FC game, Sun Oct 18, 12:00 PM</b>
+            <span>U10 WFC JRs West Ham vs Timbers, Womble Park Turf field Quad A. Arrive by 11:30 AM.</span>
+          </div>
+          <div class="item">
+            <b><span class="tag">Money</span>Chase statement ready</b>
+            <span>Latest deposit statement for the account ending 9583.</span>
+          </div>
+          <div class="item">
+            <b><span class="tag">Offer</span>Kalshi $25 bonus ends tomorrow</b>
+            <span>Promotional only. Skip unless you were planning to trade there.</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <p class="label">Money movement (last 24h)</p>
+          <div class="item"><b><span class="num">$21.44</span> and <span class="num">$7.79</span> to PayPal</b><span>Two Chase transfers at 4:43 AM Oct 17.</span></div>
+          <div class="item"><b><span class="num">$2.13</span> to Google</b><span>PayPal receipt, Oct 17.</span></div>
+          <div class="item"><b><span class="num">$10.00</span> to NCEL</b><span>PayPal receipt, Oct 16. Matches the NC Education Lottery purchase confirmation sent early today.</span></div>
+          <div class="item"><b>Anthropic receipt</b><span>Invoice emailed 12:04 AM Oct 17.</span></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="panel">
+          <p class="label">Orders and mail</p>
+          <div class="item"><b>Amazon: 2 toys and games delivered</b><span>Another 2-item toys and games order shipped, and a health care item was ordered this morning.</span></div>
+          <div class="item"><b>USPS Informed Delivery</b><span>1 mailpiece and no packages expected today.</span></div>
+        </div>
+
+        <div class="panel">
+          <p class="label">Jobs</p>
+          <div class="item"><b>Technical Product Manager, Data Platform at Leap</b><span>LinkedIn alert, listed at <span class="num">$190K–$230K</span> a year.</span></div>
+          <div class="item"><b>Sr Product Manager, Enterprise Data at Thrivent</b><span>LinkedIn job alert.</span></div>
+          <div class="item"><b>126 profile views on LinkedIn</b><span>Weekly digest.</span></div>
+        </div>
+
+        <div class="panel">
+          <p class="label">Home</p>
+          <div class="item"><b>Redfin rental picks</b><span>Morrisville from <span class="num">$1,312</span> a month and Cary at <span class="num">$3,535</span> a month.</span></div>
+          <div class="item"><b>Honeywell September energy report</b><span>Heating ran 3 hours more than August and cooling 198 hours less.</span></div>
+        </div>
+
+        <div class="panel">
+          <p class="label">Skipped as noise</p>
+          <p class="noise">Reader's Digest (2), Zappos, Ridge, Amazon news, Eventbrite, Realtor.com weekly, Flyover NC, Clever Investor, a scholarship tip newsletter and an Amazon review request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lottery" role="tabpanel" aria-labelledby="t-lottery" hidden>
+    <p class="noise" style="margin-bottom:14px">From your goldie-lottery repo. Picks were logged Oct 16, 10:53 PM before each draw. Lottery draws are random, so treat these as a for-fun experiment.</p>
+    <div class="grid" id="lotto-games"></div>
+    <div class="grid" style="margin-top:20px" id="lotto-extra"></div>
+    <div class="panel" style="margin-top:20px">
+      <p class="label">Your reminder and inbox</p>
+      <div class="item"><b>NC Education Lottery: online play purchase confirmed</b><span>Order processed early Oct 17. Sign in to your NC Lottery account to see the numbers you picked.</span></div>
+      <div class="item"><b>PayPal receipt, NCEL <span class="num">$10.00</span></b><span>Oct 16.</span></div>
+    </div>
+  </section>
+
+  <section id="stocks" role="tabpanel" aria-labelledby="t-stocks" hidden>
+    <div class="panel empty">
+      <p class="label">Stocks: exponential moving average</p>
+      <h2>This tab is waiting for your project</h2>
+      <p class="noise">The project named "Stocks-exponential moving average" did not show up from this Project's chats, Drive, Notion or your artifacts. Once it is shared here, its page goes in this tab.</p>
+      <ol class="steps">
+        <li>Open the project's page or artifact and copy its link.</li>
+        <li>Paste the link into the Personal Website chat.</li>
+        <li>Or add the project folder from the desktop app with "Add folder".</li>
+      </ol>
+    </div>
+  </section>
+  <section id="agents" role="tabpanel" aria-labelledby="t-agents" hidden>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div class="panel"><p class="label">Running</p><h2>Gmail daily brief</h2><span class="noise">Summarizes your last two days of inbox mail into the Today tab. Snapshot from Oct 17, 4:05 PM ET.</span></div>
+      <div class="panel"><p class="label">Running</p><h2>Goldie Lottery</h2><span class="noise">Powerball and Mega Millions predictor. Learns from the last 60 draws, logs picks before each draw and scores them later. A scheduled task sends a reminder the day before each draw.</span><br><a href="https://github.com/mmukidi/goldie-lottery" target="_blank" rel="noopener">Repository</a></div>
+      <div class="panel empty"><p class="label">Not connected</p><h2>Stocks: exponential moving average</h2><span class="noise">Project exists in your account but its page was not reachable from here yet.</span></div>
+      <div class="panel"><p class="label">Design</p><h2>Agent Office, Station Alpha MVP</h2><span class="noise">Your agent office prototype from Oct 3.</span><br><a href="https://claude.ai/code/artifact/2542e656-a4bd-4ef3-93cc-1144bf7ebbdf" target="_blank" rel="noopener">Open</a></div>
+      <div class="panel"><p class="label">Design</p><h2>AI Agent Office brainstorm</h2><span class="noise">MVP brainstorm and design notes.</span><br><a href="https://claude.ai/code/artifact/547ad3a0-3f1f-4f19-9ec9-aaf8fac5cc5a" target="_blank" rel="noopener">Open</a></div>
+      <div class="panel"><p class="label">Trading plans</p><h2>Day Trading System Plan and ORB Build Loop</h2><span class="noise">Your two trading write-ups from late August.</span><br><a href="https://claude.ai/code/artifact/872d9c3a-3000-4cad-b2fd-21b838c0b0a7" target="_blank" rel="noopener">Plan</a> · <a href="https://claude.ai/code/artifact/8afd3049-8f6c-4bb3-beeb-4b7b52193329" target="_blank" rel="noopener">Build loop</a></div>
+    </div>
+  </section>
+</div>
+
+<script>
+var DATA = {"generated":"2026-10-16 10:53 PM","games":[{"game":"powerball","label":"Powerball","bonus_name":"Powerball","draw_date":"2026-10-17","draw_time":"10:59 PM ET","odds":292201338,"picks":[["Formula (frequency + due + hot)",[3,14,58,64,65],14],["Balanced profile",[3,18,28,58,65],14],["Overdue gaps",[8,27,43,48,60],21],["Hot streak (fast decay)",[4,21,33,42,51],9],["Pair affinity",[3,28,36,57,58],2]],"hot":[[42,4],[4,3],[14,3],[15,3],[17,3],[19,3]],"due":[[43,42],[48,31],[60,30],[35,29],[66,27],[27,26]],"window":50,"draw_ts":"2026-10-17T22:59:00-04:00"},{"game":"megamillions","label":"Mega Millions","bonus_name":"Mega Ball","draw_date":"2026-10-20","draw_time":"11:00 PM ET","odds":290472336,"picks":[["Formula (frequency + due + hot)",[26,30,34,51,59],12],["Balanced profile",[11,30,34,43,59],12],["Overdue gaps",[18,28,31,52,69],18],["Hot streak (fast decay)",[7,15,26,40,68],17],["Pair affinity",[5,30,34,49,59],12]],"hot":[[30,4],[57,4],[68,4],[1,3],[7,3],[17,3]],"due":[[28,50],[69,50],[52,31],[31,28],[35,28],[39,27]],"window":50,"draw_ts":"2026-10-20T23:00:00-04:00"}],"draws":[{"game":"powerball","date":"2026-10-14","n1":3,"n2":34,"n3":37,"n4":42,"n5":46,"bonus":20,"overlap":0},{"game":"powerball","date":"2026-10-12","n1":22,"n2":28,"n3":38,"n4":51,"n5":69,"bonus":9,"overlap":0},{"game":"powerball","date":"2026-10-10","n1":1,"n2":4,"n3":19,"n4":33,"n5":51,"bonus":15,"overlap":1},{"game":"powerball","date":"2026-10-07","n1":11,"n2":13,"n3":14,"n4":21,"n5":65,"bonus":19,"overlap":1},{"game":"powerball","date":"2026-10-05","n1":16,"n2":23,"n3":32,"n4":36,"n5":54,"bonus":9,"overlap":0},{"game":"powerball","date":"2026-10-03","n1":4,"n2":42,"n3":44,"n4":55,"n5":59,"bonus":14,"overlap":2},{"game":"powerball","date":"2026-09-30","n1":4,"n2":6,"n3":23,"n4":33,"n5":44,"bonus":13,"overlap":1},{"game":"powerball","date":"2026-09-28","n1":17,"n2":21,"n3":29,"n4":42,"n5":49,"bonus":7,"overlap":1},{"game":"powerball","date":"2026-09-26","n1":14,"n2":40,"n3":52,"n4":55,"n5":57,"bonus":24,"overlap":1},{"game":"powerball","date":"2026-09-23","n1":5,"n2":15,"n3":26,"n4":29,"n5":30,"bonus":14,"overlap":0},{"game":"powerball","date":"2026-09-21","n1":2,"n2":7,"n3":9,"n4":17,"n5":58,"bonus":20,"overlap":2},{"game":"powerball","date":"2026-09-19","n1":18,"n2":30,"n3":41,"n4":45,"n5":68,"bonus":10,"overlap":0},{"game":"powerball","date":"2026-09-16","n1":2,"n2":21,"n3":24,"n4":25,"n5":64,"bonus":7,"overlap":0},{"game":"powerball","date":"2026-09-14","n1":19,"n2":20,"n3":57,"n4":61,"n5":67,"bonus":22,"overlap":0},{"game":"megamillions","date":"2026-10-13","n1":11,"n2":12,"n3":15,"n4":40,"n5":66,"bonus":17,"overlap":0},{"game":"megamillions","date":"2026-10-09","n1":2,"n2":7,"n3":16,"n4":63,"n5":70,"bonus":8,"overlap":0},{"game":"megamillions","date":"2026-10-06","n1":26,"n2":32,"n3":42,"n4":51,"n5":54,"bonus":22,"overlap":2},{"game":"megamillions","date":"2026-10-02","n1":6,"n2":37,"n3":40,"n4":41,"n5":55,"bonus":10,"overlap":0},{"game":"megamillions","date":"2026-09-29","n1":10,"n2":15,"n3":16,"n4":27,"n5":64,"bonus":23,"overlap":0},{"game":"megamillions","date":"2026-09-25","n1":25,"n2":57,"n3":58,"n4":67,"n5":68,"bonus":16,"overlap":0},{"game":"megamillions","date":"2026-09-22","n1":7,"n2":13,"n3":26,"n4":37,"n5":68,"bonus":8,"overlap":1},{"game":"megamillions","date":"2026-09-18","n1":4,"n2":9,"n3":24,"n4":56,"n5":68,"bonus":1,"overlap":0},{"game":"megamillions","date":"2026-09-15","n1":27,"n2":36,"n3":43,"n4":57,"n5":58,"bonus":16,"overlap":0},{"game":"megamillions","date":"2026-09-11","n1":3,"n2":30,"n3":33,"n4":53,"n5":62,"bonus":22,"overlap":1},{"game":"megamillions","date":"2026-09-08","n1":17,"n2":30,"n3":43,"n4":58,"n5":66,"bonus":20,"overlap":2},{"game":"megamillions","date":"2026-09-04","n1":6,"n2":26,"n3":34,"n4":59,"n5":61,"bonus":24,"overlap":1},{"game":"megamillions","date":"2026-09-01","n1":1,"n2":22,"n3":51,"n4":61,"n5":63,"bonus":17,"overlap":1},{"game":"megamillions","date":"2026-08-28","n1":8,"n2":17,"n3":29,"n4":42,"n5":55,"bonus":2,"overlap":1}]};
+function el(t, c, txt){ var e=document.createElement(t); if(c) e.className=c; if(txt!=null) e.textContent=txt; return e; }
+function pad(n){ return String(n).padStart(2,"0"); }
+function balls(ws, b, bn){
+  var w=el("div","balls");
+  ws.forEach(function(n){ w.appendChild(el("span","ball",pad(n))); });
+  var x=el("span","ball bonus",pad(b)); x.title=bn; w.appendChild(x); return w;
+}
+function countdown(ts){
+  var ms=new Date(ts)-new Date();
+  if(ms<=0) return "Draw time has passed";
+  var h=Math.floor(ms/36e5), m=Math.floor(ms%36e5/6e4);
+  return h>=24 ? Math.floor(h/24)+" days "+(h%24)+" hr to draw" : h+" hr "+m+" min to draw";
+}
+(function(){
+  var root=document.getElementById("lotto-games"), extra=document.getElementById("lotto-extra");
+  DATA.games.forEach(function(g){
+    var p=el("div","panel");
+    p.appendChild(el("p","label",g.label+" · "+g.draw_date+" · "+g.draw_time));
+    p.appendChild(el("div","big",countdown(g.draw_ts)));
+    g.picks.forEach(function(r, i){
+      var it=el("div","item"); it.appendChild(el("span","", r[0]+(i===0?" (main pick)":""))); it.appendChild(balls(r[1],r[2],g.bonus_name)); p.appendChild(it);
+    });
+    p.appendChild(el("p","noise","Jackpot odds: 1 in "+g.odds.toLocaleString("en-US")+" per line."));
+    root.appendChild(p);
+    var q=el("div","panel");
+    q.appendChild(el("p","label",g.label+" · last "+g.window+" draws"));
+    var hot=el("div","item"); hot.appendChild(el("b","","Hot (hits in last 20)")); hot.appendChild(el("span","num",g.hot.map(function(x){return pad(x[0])+" ("+x[1]+")";}).join("   ")));
+    var due=el("div","item"); due.appendChild(el("b","","Most overdue (draws since last seen)")); due.appendChild(el("span","num",g.due.map(function(x){return pad(x[0])+" ("+x[1]+")";}).join("   ")));
+    q.appendChild(hot); q.appendChild(due);
+    DATA.draws.filter(function(d){return d.game===g.game;}).slice(0,5).forEach(function(d){
+      var it=el("div","item"); it.appendChild(el("span","num",d.date)); it.appendChild(balls([d.n1,d.n2,d.n3,d.n4,d.n5], d.bonus, g.bonus_name)); q.appendChild(it);
+    });
+    extra.appendChild(q);
+  });
+})();
+(function () {
+  var tabs = ["today", "lottery", "stocks", "agents"];
+  function show(name) {
+    if (tabs.indexOf(name) < 0) name = "today";
+    tabs.forEach(function (t) {
+      document.getElementById(t).hidden = t !== name;
+      document.getElementById("t-" + t).setAttribute("aria-selected", t === name ? "true" : "false");
+    });
+    try { history.replaceState(null, "", "#" + name); } catch (e) {}
+  }
+  document.querySelectorAll("nav button").forEach(function (b) {
+    b.addEventListener("click", function () { show(b.getAttribute("data-tab")); });
+  });
+  show((location.hash || "").replace("#", ""));
+})();
+</script>
