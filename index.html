@@ -527,22 +527,59 @@ ol.steps { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
   </section>
 
   <section id="stocks" role="tabpanel" aria-labelledby="t-stocks" hidden>
-    <div class="panel empty">
-      <p class="label">Stocks: exponential moving average</p>
-      <h2>This tab is waiting for your project</h2>
-      <p class="noise">The project named "Stocks-exponential moving average" did not show up from this Project's chats, Drive, Notion or your artifacts. Once it is shared here, its page goes in this tab.</p>
-      <ol class="steps">
-        <li>Open the project's page or artifact and copy its link.</li>
-        <li>Paste the link into the Personal Website chat.</li>
-        <li>Or add the project folder from the desktop app with "Add folder".</li>
-      </ol>
+    <p class="noise" style="margin-bottom:14px">Summary of your "Stocks-exponential moving average" project (created Sep 27) and the stocksmodel trading plan it points to. It is a summary of your own notes, not investment advice.</p>
+    <div class="grid">
+      <div class="col">
+        <div class="panel">
+          <p class="label">Project status</p>
+          <div class="item"><b>1 chat, 1 linked folder</b><span>The chat "Exponential moving average explained" is the only conversation. The linked folder is on your computer and wasn't readable from here, so anything saved in it is not summarized yet.</span></div>
+          <div class="item"><b>Stage: strategy idea</b><span>No backtest, code or results exist in the chat yet. It ended with an offer to design entries, stops and filters.</span></div>
+        </div>
+        <div class="panel">
+          <p class="label">What the EMA chat covered</p>
+          <div class="item"><b>EMA vs simple moving average</b><span>A simple average weights every price in the window equally. An EMA weights recent prices more and lets older ones fade, so it reacts faster but is more prone to false signals in noise.</span></div>
+          <div class="item"><b>Your goal</b><span>A short-term strategy on daily bars, holding about a week or two.</span></div>
+          <div class="item"><b>Suggested setup: dual EMA crossover</b><span>Fast EMA (<span class="num">9</span> or <span class="num">12</span>) against a slow EMA (<span class="num">21</span> or <span class="num">26</span>). Fast crossing above slow is the buy signal; crossing back below is the exit. A 9/21 daily crossover is the usual starting point to backtest.</span></div>
+          <div class="item"><b>Main risk named</b><span>Crossovers work in trending markets and get chopped up in sideways ones, producing false signals.</span></div>
+        </div>
+        <div class="panel">
+          <p class="label">EMA reference</p>
+          <div class="item"><b class="num">EMA today = a × price + (1 − a) × EMA yesterday</b><span>Smoothing factor a = 2 ÷ (N + 1). That gives about <span class="num">0.20</span> for a 9-period EMA and about <span class="num">0.09</span> for a 21-period EMA.</span></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel">
+          <p class="label">Related plan: stocksmodel (ORB system)</p>
+          <div class="item"><b>Mission</b><span>Durable, risk-controlled growth on Robinhood. Strategies can be swapped; the agent roles, handoffs and Warden's risk rules stay fixed.</span></div>
+          <div class="item"><b>Starting strategy</b><span>Opening Range Breakout on 5 to 15 liquid large-caps: breakout above the first 15-minute range on 1.5x volume, stop at the opposite side, 2:1 reward to risk, no entries after 11:00 ET. VWAP reversion and trend continuation come later.</span></div>
+          <div class="item"><b>Rule change to know</b><span>The Pattern Day Trader rule was eliminated June 4, 2026 and replaced by a <span class="num">$2,000</span> minimum equity requirement, right at your stated capital. Verify your account status first.</span></div>
+          <div class="item"><b>Authorization</b><span>You approve a weekly mandate (symbols, size, limits, window) instead of each trade. It expires after a week, and anything outside it escalates to you.</span></div>
+        </div>
+        <div class="panel">
+          <p class="label">Risk rules and kill criteria</p>
+          <div class="item"><b>Per trade and per day</b><span>Flat <span class="num">1%</span> risk per trade, <span class="num">3%</span> daily loss stop, max <span class="num">3</span> trades a day, <span class="num">2</span> concurrent positions, cooldown after 2 losses.</span></div>
+          <div class="item"><b>Stop the whole project if</b><span>three honest backtests fail, live and paper diverge for two straight months, or drawdown reaches <span class="num">25%</span>.</span></div>
+        </div>
+        <div class="panel">
+          <p class="label">Agent team (8)</p>
+          <div class="item"><b>Helm, Scout, Forge, Warden, Scribe</b><span>Core. Helm is your single voice, Scout gathers data, Forge drafts signals, Warden gates every ticket, Scribe logs and reviews.</span></div>
+          <div class="item"><b>Runner, Shepherd, Sentinel</b><span>Runner places orders, Shepherd manages open positions and exits, Sentinel monitors system health.</span></div>
+        </div>
+        <div class="panel">
+          <p class="label">Build loop</p>
+          <div class="item"><b>Phase 0 foundations</b><span>Data access, logging, the ORB signal function, the risk gate and a daily report.</span></div>
+          <div class="item"><b>Phase 1 validation</b><span>Backtest with costs, parameter stability, walk-forward test with a pass or fail verdict.</span></div>
+          <div class="item"><b>Phase 2 paper, then live small</b><span>4 to 6 weeks of paper trading before any real money.</span></div>
+        </div>
+      </div>
     </div>
+    <p class="noise" style="margin-top:14px">Sources: the EMA chat, the Day Trading System Plan page and the ORB Build Loop page. Next useful step: backtest the 9/21 EMA crossover on daily bars for your watchlist.</p>
   </section>
   <section id="agents" role="tabpanel" aria-labelledby="t-agents" hidden>
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
       <div class="panel"><p class="label">Running</p><h2>Gmail daily brief</h2><span class="noise">Summarizes your last two days of inbox mail into the Today tab. Snapshot from Oct 17, 4:05 PM ET.</span></div>
       <div class="panel"><p class="label">Running</p><h2>Goldie Lottery</h2><span class="noise">Powerball and Mega Millions predictor. Learns from the last 60 draws, logs picks before each draw and scores them later. A scheduled task sends a reminder the day before each draw.</span><br><a href="https://github.com/mmukidi/goldie-lottery" target="_blank" rel="noopener">Repository</a></div>
-      <div class="panel empty"><p class="label">Not connected</p><h2>Stocks: exponential moving average</h2><span class="noise">Project exists in your account but its page was not reachable from here yet.</span></div>
+      <div class="panel"><p class="label">Research</p><h2>Stocks: exponential moving average</h2><span class="noise">Strategy idea stage: a 9/21 EMA crossover for week-long holds. No backtest yet. Summary is in the Stocks tab.</span></div>
       <div class="panel"><p class="label">Design</p><h2>Agent Office, Station Alpha MVP</h2><span class="noise">Your agent office prototype from Oct 3.</span><br><a href="https://claude.ai/code/artifact/2542e656-a4bd-4ef3-93cc-1144bf7ebbdf" target="_blank" rel="noopener">Open</a></div>
       <div class="panel"><p class="label">Design</p><h2>AI Agent Office brainstorm</h2><span class="noise">MVP brainstorm and design notes.</span><br><a href="https://claude.ai/code/artifact/547ad3a0-3f1f-4f19-9ec9-aaf8fac5cc5a" target="_blank" rel="noopener">Open</a></div>
       <div class="panel"><p class="label">Trading plans</p><h2>Day Trading System Plan and ORB Build Loop</h2><span class="noise">Your two trading write-ups from late August.</span><br><a href="https://claude.ai/code/artifact/872d9c3a-3000-4cad-b2fd-21b838c0b0a7" target="_blank" rel="noopener">Plan</a> · <a href="https://claude.ai/code/artifact/8afd3049-8f6c-4bb3-beeb-4b7b52193329" target="_blank" rel="noopener">Build loop</a></div>
